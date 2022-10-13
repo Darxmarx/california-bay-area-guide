@@ -1,6 +1,11 @@
 
 var station = $('#stName');
 
+var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb",	"bayf",	"bery",	"cast",	"civc",	"cols",	"colm",	"conc",	"daly",	"dbrk",	"dubl",	"deln",	"plza",	"embr",	"frmt",	"ftvl",	"glen",	"hayw",	"lafy",	"lake",	"mcar",	"mlbr",	"mlpt",	"mont",	"nbrk",	"ncon",	"oakl",	"orin",	"pitt",	"pctr",	"phil",	"powl",	"rich",	"rock",	"sbrn",	"sfia",	"sanl",	"shay",	"ssan",	"ucty",	"warm",	"wcrk",	"wdub",	"woak"];
+
+var stationFullName = ["12th St. Oakland City Center",	"16th St. Mission (SF)",	"19th St. Oakland",	"24th St. Mission (SF)",	"Ashby (Berkeley)",	"Antioch",	"Balboa Park (SF)",	"Bay Fair (San Leandro)",	"Berryessa / North San Jose",	"Castro Valley",	"Civic Center (SF)",	"Coliseum",	"Colma",	"Concord",	"Daly City",	"Downtown Berkeley",	"Dublin/Pleasanton",	"El Cerrito del Norte",	"El Cerrito Plaza",	"Embarcadero (SF)",	"Fremont",	"Fruitvale (Oakland)",	"Glen Park (SF)",	"Hayward",	"Lafayette",	"Lake Merritt (Oakland)",	"MacArthur (Oakland)",	"Millbrae",	"Milpitas",	"Montgomery St. (SF)",	"North Berkeley",	"North Concord/Martinez",	"Oakland Int'l Airport",	"Orinda",	"Pittsburg/Bay Point",	"Pittsburg Center",	"Pleasant Hill",	"Powell St. (SF)",	"Richmond",	"Rockridge (Oakland)",	"San Bruno",	"San Francisco Int'l Airport",	"San Leandro",	"South Hayward",	"South San Francisco",	"Union City",	"Warm Springs/South Fremont",	"Walnut Creek",	"West Dublin",	"West Oakland",
+];
+
 function fetchBart (station) {
 
     var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
@@ -14,7 +19,7 @@ function fetchBart (station) {
       })
     
       .then(function (data) {
-        console.log("data",data)
+        console.log(data)
         
       });
       
@@ -22,10 +27,24 @@ function fetchBart (station) {
 
 fetchBart();
 
-// Create a select menu, so the user can chose what is the station they want, the reason we are creating in this way as the dart require the station name abreviation.
+function setAbbreviation(station){
+  var stationAbbr = "";
+  for (var i = 0; i < stationFullName.length; i++){
+    if (station === stationFullName[i]){
+      stationAbbr = stationAbbreviation[i];
+    }
+    
+  }
+  console.log("This is the Statoin Abbreviation: " + stationAbbr);
+  return stationAbbr;
+}
 
-$( function() {
-    var availableTags = [
+setAbbreviation("Richmond");
+
+
+// Create a autofill menu, so the user can chose what is the station they want, the reason we are creating in this way as the dart require the station name abreviation.
+$(function() {
+    var availableStation = [
         "12th St. Oakland City Center",
         "16th St. Mission (SF)",
         "19th St. Oakland",
@@ -78,7 +97,7 @@ $( function() {
         "West Oakland"
     ];
     $("#station").autocomplete({
-      source: availableTags
+      source: availableStation
     });
   } );
 
