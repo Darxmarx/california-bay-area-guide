@@ -8,24 +8,36 @@ var stationFullName = ["12th St. Oakland City Center",	"16th St. Mission (SF)",	
 
 function fetchBart (station) {
 
-    var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
+  var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
+  fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
 
-    // fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+ station + "&key=" + apiKey)
-    fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
+    // .then(function (response) {
+    //     console.log(response)
+    //     return response.json();
+    //   })
+    //   .then(function (data) {
+    //     console.log(data)
+    //   });
+  .then( (response) => {
 
-    .then(function (response) {
-        console.log(response)
-        return response.json();
+    if (response.ok) {
+    console.log(response);
+
+          response.json().then((data) =>{
+          console.log("data test",data);
+          // displayNextBart(data);
+
+          });
+        } else {
+          alert('Error: Please select the correct staion from the autocomplete fild.');
+          return;
+        }
       })
-    
-      .then(function (data) {
-        console.log(data)
-        
-      });
-      
 }
 
-// fetchBart();
+// function displayNextBart(nextBart) {
+
+// }
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
 function setAbbreviation(station){
