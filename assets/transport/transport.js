@@ -11,7 +11,7 @@ function fetchBart (station) {
     var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
 
     // fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+ station + "&key=" + apiKey)
-    fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key=MW9S-E7SL-26DU-VV8V&json=y")
+    fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
 
     .then(function (response) {
         console.log(response)
@@ -27,7 +27,7 @@ function fetchBart (station) {
 
 // fetchBart();
 
-// Function to compare the full station name and the Abbreviation name
+// Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
 function setAbbreviation(station){
   var stationAbbr = "";
   for (var i = 0; i < stationFullName.length; i++){
@@ -40,7 +40,7 @@ function setAbbreviation(station){
   fetchBart(stationAbbr);
 }
 
-setAbbreviation("Millbrae");
+// setAbbreviation("Millbrae");
 
 
 // Create a autofill menu, so the user can chose what is the station they want, the reason we are creating in this way as the dart require the station name abreviation.
@@ -50,5 +50,13 @@ $(function() {
       source: staionAvailable
     });
   } );
+
+function search(){
+  setAbbreviation(document.querySelector(".search-bar").value);
+}
+
+document.querySelector(".search button").addEventListener("click", function(){
+  search();
+});
 
 
