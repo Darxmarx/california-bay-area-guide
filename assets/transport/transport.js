@@ -25,7 +25,7 @@ function fetchBart (station) {
 
           response.json().then((data) =>{
           console.log("data test",data);
-          // displayNextBart(data);
+          displayNextBart(data);
 
           });
         } else {
@@ -35,9 +35,11 @@ function fetchBart (station) {
       })
 }
 
-// function displayNextBart(nextBart) {
+function displayNextBart(nextBart) {
+  var name = nextBart.root.date;
+  console.log(name);
 
-// }
+}
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
 function setAbbreviation(station){
