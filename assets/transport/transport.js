@@ -40,29 +40,33 @@ function displayNextBart(nextBart) {
   var time1 = nextBart.root.time;  // check the time
 
   var stationName = nextBart.root.station[0].name; // check the station name
-  // ################################################
-  // var stationLength = nextBart.root.station;
-  var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop
-  var loopEstimate = nextBart.root.station[0].etd[loopEtd.length-1].estimate;
-  // ################################################
-  var destination = nextBart.root.station[0].etd[0].destination; //check the destination
+
+  //var destination = nextBart.root.station[0].etd[0].destination; //check the destination
   var platformNumb = nextBart.root.station[0].etd[0].estimate[0].platform; //platform
-  var nextBart = nextBart.root.station[0].etd[0].estimate[0].minutes; //next bart departure
+  //var nextBartTime = nextBart.root.station[0].etd[0].estimate[0].minutes; //next bart departure
 
-
-
-  console.log(date, stationName,destination,time1,destination,nextBart,platformNumb);
-  console.log(loopEtd);
-  console.log(loopEstimate);
- 
-  document.querySelector(".destination").innerText = "Destination : " + destination;
-  document.querySelector(".time").innerText = time1;
-  document.querySelector(".timeNext").innerText = "Next BART in: " + nextBart + " minutes";
-  document.querySelector(".platform").innerText = "Platform N°: " + platformNumb;
+  // ################################################
+  var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
+  var loopEstimate = nextBart.root.station[0].etd[loopEtd.length-1].estimate; // loop for time
+  // ################################################
 
   for (var i = 0; i < loopEtd.length; i++) {
-    console.log(i);
+    var finalDestination = nextBart.root.station[0].etd[i].destination;
+    console.log("the destination is: " + finalDestination);
+
+    for(var j = 0; j < loopEstimate.length; j++ ) {
+      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;
+      console.log("The estimate time is: " + nextBartTime + " minutes")
+    }
   }
+
+   console.log(date, stationName,time1,platformNumb);
+  // console.log(loopEtd);
+  // console.log(loopEstimate);
+  // document.querySelector(".destination").innerText = "Destination : " + destination;
+  // document.querySelector(".time").innerText = time1;
+  // document.querySelector(".timeNext").innerText = "Next BART in: " + nextBart + " minutes";
+  // document.querySelector(".platform").innerText = "Platform N°: " + platformNumb;
 
 }
 
