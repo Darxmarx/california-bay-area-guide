@@ -37,16 +37,20 @@ function fetchBart (station) {
 
 function displayNextBart(nextBart) {
   var date = nextBart.root.date; // check the today date
+  var time1 = nextBart.root.time;  // check the time
+
   var stationName = nextBart.root.station[0].name; // check the station name
-  var time = nextBart.root.time;  // check the time
 
   var destination = nextBart.root.station[0].etd[0].destination; //check the destination
-  var x = nextBart.root.station[0].etd[0].estimate[0].platform; 
+  var platformNumb = nextBart.root.station[0].etd[0].estimate[0].platform; //platform
   var nextBart = nextBart.root.station[0].etd[0].estimate[0].minutes; //next bart departure
   
+  console.log(date, stationName,destination,time1,destination,nextBart,platformNumb);
 
-
-  console.log(date, stationName,destination,time,destination,nextBart,x);
+  document.querySelector(".destination").innerText = "Destination : " + destination;
+  document.querySelector(".time").innerText = time1;
+  document.querySelector(".timeNext").innerText = "Next BART in: " + nextBart + " minutes";
+  document.querySelector(".platform").innerText = "Platform N°: " + platformNumb;
 
 }
 
