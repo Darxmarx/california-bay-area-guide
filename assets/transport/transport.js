@@ -1,5 +1,6 @@
 
 var station = $('#stName');
+var dest = document.querySelector(".dest");
 
 var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb",	"bayf",	"bery",	"cast",	"civc",	"cols",	"colm",	"conc",	"daly",	"dbrk",	"dubl",	"deln",	"plza",	"embr",	"frmt",	"ftvl",	"glen",	"hayw",	"lafy",	"lake",	"mcar",	"mlbr",	"mlpt",	"mont",	"nbrk",	"ncon",	"oakl",	"orin",	"pitt",	"pctr",	"phil",	"powl",	"rich",	"rock",	"sbrn",	"sfia",	"sanl",	"shay",	"ssan",	"ucty",	"warm",	"wcrk",	"wdub",	"woak"];
 
@@ -11,13 +12,6 @@ function fetchBart (station) {
   var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
   fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
 
-    // .then(function (response) {
-    //     console.log(response)
-    //     return response.json();
-    //   })
-    //   .then(function (data) {
-    //     console.log(data)
-    //   });
   .then( (response) => {
 
     if (response.ok) {
@@ -51,12 +45,18 @@ function displayNextBart(nextBart) {
   // ################################################
 
   for (var i = 0; i < loopEtd.length; i++) {
+    var divCard = document.createElement("div");
     var finalDestination = nextBart.root.station[0].etd[i].destination;
-    console.log("the destination is: " + finalDestination);
-
-    for(var j = 0; j < loopEstimate.length; j++ ) {
+    divCard.textContent = "Final destination: " + finalDestination;
+    dest.appendChild(divCard);
+    // console.log("the destination is: " + finalDestination);
+    for(var j = 0; j < loopEstimate.length -1; j++ ) {
+      var h4 = document.createElement("h4");
       var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;
-      console.log("The estimate time is: " + nextBartTime + " minutes")
+      h4.textContent = "Next BART: " + nextBartTime;
+      divCard.appendChild(h4);
+      // console.log("The estimate time is: " + nextBartTime + " minutes");
+ 
     }
   }
 
