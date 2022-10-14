@@ -124,14 +124,19 @@
                 <div>
                   <h2>Your one stop guide to california.</h2>
                 </div>
-                <div class="current-main-div">
-                  <h3 class="current-date orange">Current Date</h3>
-                  <div>
-                    <h4 class="twenty-five orange">Temp:</h4>
-                    <h4 class="twenty-five orange">Humidity:</h4>
-                    <h4 class="twenty-five orange">UV:</h4>
+                <!-- Weather part from Ying -->
+                <div class="current-main-div card">
+                  <div class="weather">
+                    <h3 class="mb-3"></h3>
+                    <div>Temp:<span class="temp"></span>°F</div>
+                    <div class="flex">
+                        <img src="" alt="" class="icon"/>
+                    </div>
+                    <div>Humidity:<span class="humidity"></span>%</div>
+                    <div>Wind speed:<span class="wind"></span>MPH</div>
                   </div>
                 </div>
+                <!-- Weather part from Ying -->
               </div>
               <div class="col-lg-5 offset-lg-1 d-flex align-items-center">
                 <div class="header-img">
@@ -266,5 +271,7 @@
       integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
