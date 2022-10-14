@@ -21,10 +21,10 @@ function fetchBart (station) {
   .then( (response) => {
 
     if (response.ok) {
-    console.log(response);
+    // console.log(response);
 
           response.json().then((data) =>{
-          console.log("data test",data);
+          console.log(data);
           displayNextBart(data);
 
           });
@@ -36,8 +36,17 @@ function fetchBart (station) {
 }
 
 function displayNextBart(nextBart) {
-  var name = nextBart.root.date;
-  console.log(name);
+  var date = nextBart.root.date; // check the today date
+  var stationName = nextBart.root.station[0].name; // check the station name
+  var time = nextBart.root.time;  // check the time
+
+  var destination = nextBart.root.station[0].etd[0].destination; //check the destination
+  var x = nextBart.root.station[0].etd[0].estimate[0].platform; 
+  var nextBart = nextBart.root.station[0].etd[0].estimate[0].minutes; //next bart departure
+  
+
+
+  console.log(date, stationName,destination,time,destination,nextBart,x);
 
 }
 
