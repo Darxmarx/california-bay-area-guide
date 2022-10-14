@@ -61,7 +61,7 @@ function displayNextBart(nextBart) {
   }
 
    console.log(date, stationName,time1,platformNumb);
-  // console.log(loopEtd);
+   console.log(loopEtd);
   // console.log(loopEstimate);
   // document.querySelector(".destination").innerText = "Destination : " + destination;
   // document.querySelector(".time").innerText = time1;
