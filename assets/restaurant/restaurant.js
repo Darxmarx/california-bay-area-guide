@@ -4,8 +4,9 @@ var apiKey = "3pOEjNFRg7sRIZM6MAdUVDCecyWU-vdaV8QdqxD_WyHlIcsykEO1FknqGAuWwaBAJm
     //https://cors-anywhere.herokuapp.com/ is added to serve as a proxy API to bypass CORS issues
 var requestUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search";
 
-var searchTerm = $(".search-bar");
+var searchTerm = ""//$(".search-bar");
 var searchBtn = $("#search-btn");
+
 
 //function loadRestaurants() {
 
@@ -21,7 +22,8 @@ $.ajax({
     },
     data: {
         location: "san-francisco", //always searches the San Francisco area for results
-        term: "tacos"
+        categories: "restaurants", //always searches restaurants
+        term: searchTerm
     }
 }).then(function (response) {
     console.log(response);
