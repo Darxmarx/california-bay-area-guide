@@ -5,8 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="./restaurant.css"/>
 </head>
 <body>
+    <div class="modal" id="dialog">
+        <p>
+          This is the default dialog which is useful for displaying information.
+          The dialog window can be moved, resized and closed with the 'x' icon.
+        </p>
+    </div>
+
     <div class="search">
         <label for="tags">What are you in the mood for?</label>
         <input type="text" id="search-term">
@@ -14,6 +23,8 @@
     </div>
     
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="./restaurant.js"></script>
 </body>
 </html>

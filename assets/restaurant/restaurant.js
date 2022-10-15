@@ -7,9 +7,8 @@ var requestUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/bu
 var searchTerm = $("#search-term");
 var searchBtn = $("#search-btn");
 
-
 function loadRestaurants() {
-$.ajax({
+    $.ajax({
     url: requestUrl,
     method: "GET",
     headers: {
@@ -19,14 +18,19 @@ $.ajax({
         //To authenticate API calls with the API Key, set the Authorization HTTP header value as Bearer API_KEY.
         "Authorization": "Bearer " + apiKey 
     },
-    data: {
+    data: { //dynamically adds in parameters
         location: "san-francisco", //always searches the San Francisco area for results
         categories: "restaurants", //always searches restaurants
         term: searchTerm.val() //plug in term from user input
     }
-}).then(function (response) {
-    console.log(response);
-});
+    }).then(function (response) {
+        console.log(response);
+    });
 }
 
+function createModal() {
+    $('#dialog').dialog();
+}
+
+$(window).on("load", createModal);
 searchBtn.click(loadRestaurants);
