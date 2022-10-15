@@ -36,38 +36,39 @@ function displayNextBart(nextBart) {
   var stationName = nextBart.root.station[0].name; // check the station name
 
   //var destination = nextBart.root.station[0].etd[0].destination; //check the destination
-  var platformNumb = nextBart.root.station[0].etd[0].estimate[0].platform; //platform
+  // var platformNumb = nextBart.root.station[0].etd[0].estimate[0].platform; //platform
   //var nextBartTime = nextBart.root.station[0].etd[0].estimate[0].minutes; //next bart departure
 
   // ################################################
   var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
-  var loopEstimate = nextBart.root.station[0].etd[loopEtd.length-1].estimate; // loop for time
   // ################################################
 
+
+  dest.textContent = stationName;// this is from a global variable
   for (var i = 0; i < loopEtd.length; i++) {
-    var divCard = document.createElement("div");
+    var loopEstimate = nextBart.root.station[0].etd[i].estimate;// loop for time
+    var divCard = document.createElement("div");// creates a div that will add the API
     var finalDestination = nextBart.root.station[0].etd[i].destination;
     divCard.textContent = "Final destination: " + finalDestination;
     dest.appendChild(divCard);
     // console.log("the destination is: " + finalDestination);
     for(var j = 0; j < loopEstimate.length -1; j++ ) {
       var h4 = document.createElement("h4");
-      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;
-      h4.textContent = "Next BART: " + nextBartTime;
-      divCard.appendChild(h4);
-      // console.log("The estimate time is: " + nextBartTime + " minutes");
- 
+      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;// Check the min
+      var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform; // Check platf
+      
+      if (j === 0) {
+        h4.textContent = "Departure in: " + nextBartTime + ", Platform: " + platformNumb;
+        divCard.appendChild(h4);
+      } else {
+        h4.textContent = "Next BART in: " + nextBartTime + ", Platform: " + platformNumb;
+        divCard.appendChild(h4);
+      }
     }
   }
 
    console.log(date, stationName,time1,platformNumb);
    console.log(loopEtd);
-  // console.log(loopEstimate);
-  // document.querySelector(".destination").innerText = "Destination : " + destination;
-  // document.querySelector(".time").innerText = time1;
-  // document.querySelector(".timeNext").innerText = "Next BART in: " + nextBart + " minutes";
-  // document.querySelector(".platform").innerText = "Platform N°: " + platformNumb;
-
 }
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
