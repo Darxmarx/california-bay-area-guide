@@ -32,27 +32,25 @@ function fetchBart (station) {
 function displayNextBart(nextBart) {
   var date = nextBart.root.date; // check the today date
   var time1 = nextBart.root.time;  // check the time
-
   var stationName = nextBart.root.station[0].name; // check the station name
-
-  //var destination = nextBart.root.station[0].etd[0].destination; //check the destination
-  // var platformNumb = nextBart.root.station[0].etd[0].estimate[0].platform; //platform
-  //var nextBartTime = nextBart.root.station[0].etd[0].estimate[0].minutes; //next bart departure
-
-  // ################################################
+    // ################################################
   var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
   // ################################################
+  dest.textContent = stationName;// This will add tge station name the user is searchin for
 
-
-  dest.textContent = stationName;// this is from a global variable
+  // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.
   for (var i = 0; i < loopEtd.length; i++) {
+
     var loopEstimate = nextBart.root.station[0].etd[i].estimate;// loop for time
-    var divCard = document.createElement("div");// creates a div that will add the API
     var finalDestination = nextBart.root.station[0].etd[i].destination;
-    divCard.textContent = "Final destination: " + finalDestination;
+
+    var divCard = document.createElement("div");// creates a div that will add the API infomration
+    var h3 = document.createElement("h3");
+    h3.textContent = "Final destination: " + finalDestination;
     dest.appendChild(divCard);
+    divCard.appendChild(h3);
     // console.log("the destination is: " + finalDestination);
-    for(var j = 0; j < loopEstimate.length -1; j++ ) {
+    for(var j = 0; j < loopEstimate.length; j++ ) {
       var h4 = document.createElement("h4");
       var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;// Check the min
       var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform; // Check platf
@@ -63,6 +61,7 @@ function displayNextBart(nextBart) {
       } else {
         h4.textContent = "Next BART in: " + nextBartTime + ", Platform: " + platformNumb;
         divCard.appendChild(h4);
+        j++;
       }
     }
   }
