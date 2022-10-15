@@ -16,7 +16,7 @@ function fetchBart (station) {
 
     if (response.ok) {
     // console.log(response);
-
+    localStorage.setItem("station", JSON.stringify(station));
           response.json().then((data) =>{
           console.log(data);
           displayNextBart(data);
@@ -36,7 +36,10 @@ function displayNextBart(nextBart) {
     // ################################################
   var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
   // ################################################
+
+  // Should check this with shaun tomorrow to see how he wants to display
   dest.textContent = stationName;// This will add tge station name the user is searchin for
+
 
   // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.
   for (var i = 0; i < loopEtd.length; i++) {
