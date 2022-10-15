@@ -1,5 +1,6 @@
 
 var station = $('#stName');
+var dest = document.querySelector(".dest");
 
 var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb",	"bayf",	"bery",	"cast",	"civc",	"cols",	"colm",	"conc",	"daly",	"dbrk",	"dubl",	"deln",	"plza",	"embr",	"frmt",	"ftvl",	"glen",	"hayw",	"lafy",	"lake",	"mcar",	"mlbr",	"mlpt",	"mont",	"nbrk",	"ncon",	"oakl",	"orin",	"pitt",	"pctr",	"phil",	"powl",	"rich",	"rock",	"sbrn",	"sfia",	"sanl",	"shay",	"ssan",	"ucty",	"warm",	"wcrk",	"wdub",	"woak"];
 
@@ -11,21 +12,14 @@ function fetchBart (station) {
   var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
   fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
 
-    // .then(function (response) {
-    //     console.log(response)
-    //     return response.json();
-    //   })
-    //   .then(function (data) {
-    //     console.log(data)
-    //   });
   .then( (response) => {
 
     if (response.ok) {
-    console.log(response);
+    // console.log(response);
 
           response.json().then((data) =>{
-          console.log("data test",data);
-          // displayNextBart(data);
+          console.log(data);
+          displayNextBart(data);
 
           });
         } else {
@@ -35,9 +29,46 @@ function fetchBart (station) {
       })
 }
 
-// function displayNextBart(nextBart) {
+function displayNextBart(nextBart) {
+  var date = nextBart.root.date; // check the today date
+  var time1 = nextBart.root.time;  // check the time
+  var stationName = nextBart.root.station[0].name; // check the station name
+    // ################################################
+  var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
+  // ################################################
+  dest.textContent = stationName;// This will add tge station name the user is searchin for
 
-// }
+  // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.
+  for (var i = 0; i < loopEtd.length; i++) {
+
+    var loopEstimate = nextBart.root.station[0].etd[i].estimate;// loop for time
+    var finalDestination = nextBart.root.station[0].etd[i].destination; // display the final dest name
+
+    var divCard = document.createElement("div");// creates a div that will add the API infomration
+    var h3 = document.createElement("h3"); // create a h3 tag to be linked to the destination name
+    h3.textContent = "Final destination: " + finalDestination;
+    dest.appendChild(divCard);
+    divCard.appendChild(h3);
+    
+    // the second for loop is to iterate over the nested array, so I will be able to display to the user the departure time and also the next bart available.
+    for(var j = 0; j < loopEstimate.length; j++ ) {
+      var h4 = document.createElement("h4");
+      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;// Check the min
+      var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform; // Check platf
+      // create if statment, as I want to display the for the first time as Departure in and the second time to display as NEXT BART
+      if (j === 0) {
+        h4.textContent = "Departure in: " + nextBartTime + ", Platform: " + platformNumb;
+        divCard.appendChild(h4);
+      } else {
+        h4.textContent = "Next BART in: " + nextBartTime + ", Platform: " + platformNumb;
+        divCard.appendChild(h4);
+        j++;
+      }
+    }
+  }
+  //  console.log(date, stationName,time1,platformNumb);
+  //  console.log(loopEtd);
+}
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
 function setAbbreviation(station){
