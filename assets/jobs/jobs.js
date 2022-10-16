@@ -41,6 +41,7 @@ function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	historySearchList.push(searchInputResult + ";" + searchInputOneResult);
 	// save data in the local storage
 	localStorage.setItem("historySearch", JSON.stringify(historySearchList));
+
 	var itemLi = ""; //history record list
 	for (var i = 0; i < historySearchList.length; i++) { // use for loop to add history record into list
 	 const item = historySearchList[i]; //insert value of list
