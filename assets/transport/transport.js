@@ -1,6 +1,9 @@
 
 var station = $('#stName');
 var dest = document.querySelector(".dest");
+var stationContainer = document.querySelector("#stationContainer");
+
+var localStg = [];
 
 var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb",	"bayf",	"bery",	"cast",	"civc",	"cols",	"colm",	"conc",	"daly",	"dbrk",	"dubl",	"deln",	"plza",	"embr",	"frmt",	"ftvl",	"glen",	"hayw",	"lafy",	"lake",	"mcar",	"mlbr",	"mlpt",	"mont",	"nbrk",	"ncon",	"oakl",	"orin",	"pitt",	"pctr",	"phil",	"powl",	"rich",	"rock",	"sbrn",	"sfia",	"sanl",	"shay",	"ssan",	"ucty",	"warm",	"wcrk",	"wdub",	"woak"];
 
@@ -13,10 +16,14 @@ function fetchBart (station) {
   fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
 
   .then( (response) => {
-
+    console.log(localStg);
     if (response.ok) {
-    // console.log(response);
-    localStorage.setItem("station", JSON.stringify(station));
+      if (localStg.includes(station) === false){// it will check if the name already exists
+        localStg[localStg.length] = station; //save the station name in the last index of the array
+        console.log(localStg);
+        localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
+      }
+
           response.json().then((data) =>{
           console.log(data);
           displayNextBart(data);
@@ -104,5 +111,7 @@ function search(){
 document.querySelector(".search button").addEventListener("click", function(){
   search();
 });
+
+
 
 
