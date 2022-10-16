@@ -11,8 +11,10 @@
 <body>
     <div class="modal" id="dialog">
         <p>
-          This is the default dialog which is useful for displaying information.
-          The dialog window can be moved, resized and closed with the 'x' icon.
+            Before searching for restaurants, please visit 
+            <a href="https://cors-anywhere.herokuapp.com/corsdemo">this link</a>, and click the "Request temporary access to the demo server" button. 
+            <br/>
+            Then, you may close this dialogue and begin your search!
         </p>
     </div>
 
@@ -21,6 +23,8 @@
         <input type="text" id="search-term">
         <button id="search-btn">Search</button>
     </div>
+
+    <div id="restaurant-container"></div>
     
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
