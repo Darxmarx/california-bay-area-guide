@@ -112,6 +112,17 @@ document.querySelector(".search button").addEventListener("click", function(){
   search();
 });
 
+function displayStation() {
+  var storedStation = JSON.parse(localStorage.getItem("station"));
+  if (storedStation !== null) {
+    localStg = storedStation;
+    addStationToDisplay();
 
+  }
+}
+
+function addStationToDisplay(){
+
+}
 
 
