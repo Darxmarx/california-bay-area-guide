@@ -11,12 +11,10 @@ var simpleSearchOneResult = document.querySelector("#simple-search1-result"); //
 var searchIconResult = document.querySelector("#search-btn-result"); //search button (result)
 var searchHistory = document.querySelector(".search-history"); // search history record
 var vacanciesList = document.querySelector(".vacancies-list");
+var vacanciesEmptyEl = document.querySelector(".vacancies-list +.empty-result");
 var paginator = document.querySelector("#pagination");
 var showApiPerPage = 10;
 var currentPage = 1;
-
-
-
 
 function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	var historySearchList = JSON.parse(localStorage.getItem("historySearch") || "[]");
@@ -86,7 +84,7 @@ function handlePagination(totalNumber, searchInputResult, searchInputOneResult) 
 	  }
 	 });
 	}
-   }
+}
 
 
 
