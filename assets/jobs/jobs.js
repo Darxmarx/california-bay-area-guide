@@ -136,3 +136,10 @@ searchIcon.addEventListener("click", function (e) {
 	var searchInputOneResult = simpleSearchOne.value; //get the value from second column
 	getJobsAPI (searchInputResult, searchInputOneResult);
 });
+
+searchIconResult.addEventListener("click", function (e) {
+	e.preventDefault();
+	var searchInputResult = simpleSearchResult.value;
+	var searchInputOneResult = simpleSearchOneResult.value;
+	getJobsAPI (searchInputResult, searchInputOneResult);
+});
