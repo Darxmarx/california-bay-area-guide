@@ -20,11 +20,11 @@ function fetchBart (station) {
   .then( (response) => {
     console.log(localStg);
     if (response.ok) {
-      if (localStg.includes(station) === false){// it will check if the name already exists
-        localStg[localStg.length] = station; //save the station name in the last index of the array
-        console.log(localStg);
-        localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
-      }
+      // if (localStg.includes(station) === false){// it will check if the name already exists
+      //   localStg[localStg.length] = station; //save the station name in the last index of the array
+      //   console.log(localStg);
+      //   localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
+      // }
 
           response.json().then((data) =>{
           console.log(data);
@@ -78,12 +78,18 @@ function displayNextBart(nextBart) {
       }
     }
   }
+  
   //  console.log(date, stationName,time1,platformNumb);
   //  console.log(loopEtd);
 }
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
 function setAbbreviation(station){
+  if (localStg.includes(station) === false){// it will check if the name already exists
+    localStg[localStg.length] = station; //save the station name in the last index of the array
+    console.log(localStg);
+    localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
+  }
   var stationAbbr = "";
   for (var i = 0; i < stationFullName.length; i++){
     if (station === stationFullName[i]){
@@ -112,6 +118,7 @@ function search(){
 
 document.querySelector(".search button").addEventListener("click", function(){
   search();
+  
 });
 
 function displayStation() {// save in the array the localStorage information
@@ -130,12 +137,18 @@ function addStationToDisplay(){
 
     var button = document.createElement("button");
     button.textContent = stationStg;
-    button.addEventListener("click", function(event){// check with TA line 115
+    button.addEventListener("click", function(event){// add the event listner in the every button
       var stationStg = event.target.textContent;
       console.log(stationStg);
-      fetchBart(stationStg); 
+      setAbbreviation(stationStg); 
   });
   stationContainer.appendChild(button);
+  }
+}
+
+function localStgSize() {
+  if (localStg.length >= 4){
+    localStg.shift();
   }
 }
 
