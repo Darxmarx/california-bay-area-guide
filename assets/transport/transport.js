@@ -29,6 +29,8 @@ function fetchBart (station) {
           response.json().then((data) =>{
           console.log(data);
           displayNextBart(data);
+          // stationContainer.innerHTML = '';
+          displayStations();
 
           });
         } else {
@@ -77,6 +79,7 @@ function displayNextBart(nextBart) {
         j++;
       }
     }
+
   }
   
   //  console.log(date, stationName,time1,platformNumb);
@@ -85,9 +88,12 @@ function displayNextBart(nextBart) {
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
 function setAbbreviation(station){
-  if (localStg.includes(station) === false){// it will check if the name already exists
+  if (localStg.includes(station) === false &&  stationFullName.includes(station) === true){// it will check if the name already exists
     localStg[localStg.length] = station; //save the station name in the last index of the array
     console.log(localStg);
+    if(localStg.length > 5) {
+      localStg.shift();
+    }
     localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
   }
   var stationAbbr = "";
@@ -100,9 +106,6 @@ function setAbbreviation(station){
   console.log("This is the Statoin Abbreviation: " + stationAbbr);
   fetchBart(stationAbbr);
 }
-
-// setAbbreviation("Millbrae");
-
 
 // Create a autofill menu, so the user can chose what is the station they want, the reason we are creating in this way as the dart require the station name abreviation.
 $(function() {
@@ -121,20 +124,24 @@ document.querySelector(".search button").addEventListener("click", function(){
   
 });
 
-function displayStation() {// save in the array the localStorage information
-  var storedStation = JSON.parse(localStorage.getItem("station"));
-  if (storedStation !== null) {// will check if the localStorage is not null
-    localStg = storedStation; //then will add the information from local storage to the var localStg
+function displayStations() {// save in the array the localStorage information
+  var storedStations = JSON.parse(localStorage.getItem("station"));
+  if (storedStations !== null) {// will check if the localStorage is not null
+    localStg = storedStations; //then will add the information from local storage to the var localStg
     addStationToDisplay();
 
   }
 }
 
 function addStationToDisplay(){
-  stationContainer.innerHtml = "";// remove all the buttons, as I need it to go in the for loop to check if there is any update;
+  stationContainer.innerHTML = '';// remove all the buttons, as I need it to go in the for loop to check if there is any update;
+
   for (var i = 0; i <localStg.length; i++){
     var stationStg = localStg[i];
 
+    // if (localStg.length >= 4){
+    //   localStg.shift();
+    // }
     var button = document.createElement("button");
     button.textContent = stationStg;
     button.addEventListener("click", function(event){// add the event listner in the every button
@@ -147,9 +154,8 @@ function addStationToDisplay(){
 }
 
 function localStgSize() {
-  if (localStg.length >= 4){
-    localStg.shift();
-  }
 }
 
-displayStation();
+displayStations();
+
+
