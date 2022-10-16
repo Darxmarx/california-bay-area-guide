@@ -67,16 +67,26 @@ vacanciesList.innerHTML = itemLi;
 }
 
 function handlePagination(totalNumber, searchInputResult, searchInputOneResult) {
-	$(paginator).pagination({
-		items: totalNumber,
-		itemsOnPage: showApiPerPage,
-		currentPage: currentPage,
-		onPageClick: function (pageNumber, event) {
-			currentPage = pageNumber;
-			getJobsAPI (searchInputResult, searchInputOneResult);
-		}
-	});
-}
+	if(totalNumber===0){
+	 vacanciesEmptyEl.classList.remove("hidden");
+	 paginator.classList.add("hidden");
+	}
+	else{
+	 vacanciesEmptyEl.classList.add("hidden");
+	 paginator.classList.remove("hidden");
+	 $(paginator).pagination({
+	  items: totalNumber,
+	  itemsOnPage: showApiPerPage,
+	  currentPage: currentPage,
+	  onPageClick: function (pageNumber, event) {
+	   currentPage = pageNumber;
+	   getJobsAPI (searchInputResult, searchInputOneResult);
+	  }
+	 });
+	}
+   }
+
+
 
 function getJobsAPI (searchInputResult, searchInputOneResult) {
 	var apiId = 'f79154d7';
