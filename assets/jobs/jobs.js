@@ -12,6 +12,8 @@ var searchIconResult = document.querySelector("#search-btn-result"); //search bu
 var searchHistory = document.querySelector(".search-history"); // search history record
 var vacanciesList = document.querySelector(".vacancies-list");
 var paginator = document.querySelector("#pagination");
+var showApiPerPage = 10;
+var currentPage = 1;
 
 
 
