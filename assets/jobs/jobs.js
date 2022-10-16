@@ -20,9 +20,16 @@ function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	var itemLi = "";
 	for (var i = 0; i < historySearchList.length; i++) {
 	 const item = historySearchList[i];
-	 itemLi += `<li">${item}</li>`;
+	 itemLi += `<li class="cursor-pointer bg-slate-300 p-2 m-3">${item}</li>`;
 	}
 	searchHistory.innerHTML = itemLi;
+	var searchHistoryLis = document.querySelectorAll(".search-history li");
+   
+	for(let i=0;i<searchHistoryLis.length;i++){
+	 searchHistoryLis[i].addEventListener("click",function(){ 
+	  getJobsAPI (historySearchList[i].split(";")[0], historySearchList[i].split(";")[1]);
+	 });
+	}
 
    }
 
