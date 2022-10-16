@@ -10,6 +10,8 @@ var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb
 var stationFullName = ["12th St. Oakland City Center",	"16th St. Mission (SF)",	"19th St. Oakland",	"24th St. Mission (SF)",	"Ashby (Berkeley)",	"Antioch",	"Balboa Park (SF)",	"Bay Fair (San Leandro)",	"Berryessa / North San Jose",	"Castro Valley",	"Civic Center (SF)",	"Coliseum",	"Colma",	"Concord",	"Daly City",	"Downtown Berkeley",	"Dublin/Pleasanton",	"El Cerrito del Norte",	"El Cerrito Plaza",	"Embarcadero (SF)",	"Fremont",	"Fruitvale (Oakland)",	"Glen Park (SF)",	"Hayward",	"Lafayette",	"Lake Merritt (Oakland)",	"MacArthur (Oakland)",	"Millbrae",	"Milpitas",	"Montgomery St. (SF)",	"North Berkeley",	"North Concord/Martinez",	"Oakland Int'l Airport",	"Orinda",	"Pittsburg/Bay Point",	"Pittsburg Center",	"Pleasant Hill",	"Powell St. (SF)",	"Richmond",	"Rockridge (Oakland)",	"San Bruno",	"San Francisco Int'l Airport",	"San Leandro",	"South Hayward",	"South San Francisco",	"Union City",	"Warm Springs/South Fremont",	"Walnut Creek",	"West Dublin",	"West Oakland",
 ];
 
+
+
 function fetchBart (station) {
 
   var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
@@ -112,17 +114,29 @@ document.querySelector(".search button").addEventListener("click", function(){
   search();
 });
 
-function displayStation() {
+function displayStation() {// save in the array the localStorage information
   var storedStation = JSON.parse(localStorage.getItem("station"));
-  if (storedStation !== null) {
-    localStg = storedStation;
+  if (storedStation !== null) {// will check if the localStorage is not null
+    localStg = storedStation; //then will add the information from local storage to the var localStg
     addStationToDisplay();
 
   }
 }
 
 function addStationToDisplay(){
+  stationContainer.innerHtml = "";// remove all the buttons, as I need it to go in the for loop to check if there is any update;
+  for (var i = 0; i <localStg.length; i++){
+    var stationStg = localStg[i];
 
+    var button = document.createElement("button");
+    button.textContent = stationStg;
+    button.addEventListener("click", function(event){// check with TA line 115
+      var stationStg = event.target.textContent;
+      console.log(stationStg);
+      fetchBart(stationStg); 
+  });
+  stationContainer.appendChild(button);
+  }
 }
 
-
+displayStation();
