@@ -4,6 +4,7 @@ var simpleSearch = document.querySelector("#simple-search"); //search bar (first
 var simpleSearchOne = document.querySelector("#simple-search1"); //search bar (second column)
 
 
+
 var jobsresultEl = document.querySelector(".jobsresult");
 var iconHome = document.querySelector(".icon-home");
 var simpleSearchResult = document.querySelector("#simple-search-result"); //search bar (result) (first column)
@@ -15,6 +16,18 @@ var vacanciesEmptyEl = document.querySelector(".vacancies-list +.empty-result");
 var paginator = document.querySelector("#pagination");
 var showApiPerPage = 10;
 var currentPage = 1;
+
+
+function switchPage (returnHomepage) {
+	if (returnHomepage) {
+		mainEl.classList.remove("hidden");
+		jobsresultEl.classList.add("hidden");
+	}
+	else {
+		mainEl.classList.add("hidden");
+		jobsresultEl.classList.remove("hidden");
+	}
+}
 
 function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	var historySearchList = JSON.parse(localStorage.getItem("historySearch") || "[]");
