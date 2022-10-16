@@ -251,6 +251,10 @@ button#search-btn {
     margin-left: 20px;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 .api-section{
     background: #FFFCFA;
     box-shadow: 0px 0px 20px rgba(174, 174, 219, 0.2);

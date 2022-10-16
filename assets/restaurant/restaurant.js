@@ -4,7 +4,7 @@ var apiKey = "3pOEjNFRg7sRIZM6MAdUVDCecyWU-vdaV8QdqxD_WyHlIcsykEO1FknqGAuWwaBAJm
     //https://cors-anywhere.herokuapp.com/ is added to serve as a proxy API to bypass CORS issues
 var requestUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search";
 
-var restaurantContainerEl = $("#restaurant-container");
+var restGrid = $("#rest-grid");
 var searchTerm = $("#search-term");
 var searchBtn = $("#search-btn");
 
@@ -24,34 +24,27 @@ function loadRestaurants() {
     data: { //dynamically adds in parameters
         location: "san-francisco", //always searches the San Francisco area for results
         categories: "restaurants", //always searches restaurants
-        limit: 11, //returns 10 results for whatever user searched
+        limit: 12, //returns 12 results for whatever user searched
         term: searchTerm.val() //plug in term from user input
     }
     }).then(function (response) {
         console.log(response); //checking if object was successfully retrieved
-        var returnData = JSON.parse(response);
 
-        //generates and appends elements based on response
-        var restEl = document.createElement("div");
-        var titleEl = document.createElement("p");
-    
-        for (var i = 0; i <= returnData.businesses.length; i++) {
-            var restName = returnData.businesses[i].name;
+        for (var i = 0; i < response.businesses.length; i++) {
+            var restName = response.businesses[i].name;
             console.log(restName);
-            /*titleEl.innerHTML = restName;
-            restEl.append(titleEl);
-            restaurantContainerEl.append(restEl);*/
-
-            var restImg = returnData.businesses[i].image_url;
+            
+            var restImg = response.businesses[i].image_url;
             console.log(restImg);
 
-            var restUrl = returnData.businesses[i].url;
-            console.log(restUrl);
-
+            var restUrl = response.businesses[i].url;
+            console.log(restUrl);        
         }
-        
     })
+    restGrid.removeClass("invisible");
 }
+
+
 
 //modal that requires user to request access to cors-anywhere.herokuapp demo server
 function createModal() {
