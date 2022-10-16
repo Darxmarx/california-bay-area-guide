@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Tailwind js v.3 -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!-- Simple Pagination css library -->
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.min.css"
@@ -18,6 +19,7 @@
     <main class="h-screen flex justify-center items-center">
         <div class="jobspage">
             <h1 class="ui block header mb-5">Jobs</h1>
+        <!-- Two search bar for column, first column is for insert job, company, title; second column is for insert city and ZIP code -->
         <form class="flex items-center mb-5">
             <div class="flex w-full mr-3">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -98,8 +100,8 @@
                 <span class="sr-only">Search</span>
                 </button>
             </div>
-            </form>
-        
+        </form>
+        <!-- Google map for jobs search reference -->
         <div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612503.0825921164!2d-123.54423682056256!3d37.87385748955031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808583a3a688d7b5%3A0x8c891b8457461fa9!2sSan%20Francisco%20Bay%20Area%2C%20CA!5e0!3m2!1sen!2sus!4v1665670439303!5m2!1sen!2sus"
@@ -111,13 +113,14 @@
                 referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
         </div>
-     
-    </main>
+     </main>
     <!-- Job result page -->
-    <section class="jobsresult container px-4 py-4 mx-auto">
+    <section class="jobsresult container px-4 py-4 mx-auto hidden">
         <div>
+            <!-- Return to jobs homepage icon -->
             <div class="icon-home w-16 cursor-pointer mb-2"></div>
-            <form class="flex items-center mb-5 hidden">
+            <!-- Two search bar for column, first column is for insert job, company, title; second column is for insert city and ZIP code -->
+            <form class="flex items-center mb-5">
                 <div class="flex w-full mr-3">
                 <label for="simple-search-result" class="sr-only">Search</label>
                 <div class="relative w-full">
@@ -200,8 +203,10 @@
             </form>
         </div>
         <div class="flex flex-row gap-4">
+            <!-- Record history search -->
             <ul class="search-history basis-3/12"></ul>
             <div class="basis-9/12">
+            <!-- Display job resutl list -->
             <ul class="vacancies-list grid grid-cols-1 gap-4"></ul>
             <p class="empty-result empty-result border rounded-md text-center py-24">Sorry! No result found :(</p>
         </div>
