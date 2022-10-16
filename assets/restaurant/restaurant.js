@@ -13,6 +13,7 @@ function loadRestaurants() {
     $.ajax({
     url: requestUrl,
     method: "GET",
+    dataType: "json",
     headers: {
         "accept": "application/json",
         "x-requested-with": "xmlhttprequest",
@@ -26,28 +27,30 @@ function loadRestaurants() {
         limit: 10, //returns 10 results for whatever user searched
         term: searchTerm.val() //plug in term from user input
     }
+    /*success: function(data) {
+        console.log(data);
+        $.each(data, function(index, element) {
+            $("body").append($("<div>", {
+                text: element.name
+            }));
+        });
+    }*/
     }).then(function (response) {
         console.log(response);
-        displayRestaurants;
-    });
-}
 
-//generates and appends elements based on data from loadRestaurants
-function displayRestaurants() {
-    var restEl = document.createElement("div");
-    var titleEl = document.createElement("span");
+        //generates and appends elements based on response
+        var restEl = document.createElement("div");
+        var titleEl = document.createElement("span");
     
-    for (var i = 0; i <= 9; i++) {
-        var restName = response.businesses[i].name;
-        console.log(response.businesses[i].name);
+        for (var i = 0; i <= response.businesses.length; i++) {
+            var restName = response.businesses[i].name;
+            console.log(restName);
 
-        
-        titleEl.textContent = restName;
-
-        
-    }
-    restEl.appendChild(titleEl);
-    restaurantContainerEl.appendChild(restEl);
+            titleEl.textContent = restName;
+        }
+        restEl.appendChild(titleEl);
+        restaurantContainerEl.appendChild(restEl);
+    })
 }
 
 //modal that requires user to request access to cors-anywhere.herokuapp demo server
