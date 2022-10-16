@@ -10,6 +10,7 @@ var simpleSearchResult = document.querySelector("#simple-search-result"); //sear
 var simpleSearchOneResult = document.querySelector("#simple-search1-result"); //search bar (result) (second column)
 var searchIconResult = document.querySelector("#search-btn-result"); //search button (result)
 var searchHistory = document.querySelector(".search-history"); // search history record
+var vacanciesList = document.querySelector(".vacancies-list");
 
 
 
@@ -32,6 +33,36 @@ function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	}
 
    }
+
+function displayVacancyResult (dataList) {
+	var itemLi = "";
+	for (var i = 0; i < dataList.length; i++) {
+	var item = dataList[i];
+	var redirect = item.redirect_url;
+	var company = item.company.display_name || "";
+	var position = item.title;
+	var location = item.location.display_name;
+	var description = item.description;
+	var liTemplate = `
+		<li
+			class="border rounded-md p-5 transition ease-in-out delay-150 bg-white hover:bg-cyan-50 hover:scale-105 hover:shadow-md duration-300"
+		>
+			<a class="block" href="${redirect}" target="_blank">
+				<h2 class="text-xl font-bold text-sky-600">
+					${company}
+				</h2>
+				<h3 class="text-md">${position}</h3>
+				<span class="text-stone-400 text-sm">${location}</span>
+				<p class="line-clamp-3">
+					${description}
+				</p>
+			</a>
+		</li>
+	`;
+	itemLi += liTemplate;
+}
+vacanciesList.innerHTML = itemLi;
+}
 
 
 function getJobsAPI (searchInputResult, searchInputOneResult) {
