@@ -11,6 +11,8 @@ var simpleSearchOneResult = document.querySelector("#simple-search1-result"); //
 var searchIconResult = document.querySelector("#search-btn-result"); //search button (result)
 var searchHistory = document.querySelector(".search-history"); // search history record
 var vacanciesList = document.querySelector(".vacancies-list");
+var paginator = document.querySelector("#pagination");
+
 
 
 
@@ -64,6 +66,17 @@ function displayVacancyResult (dataList) {
 vacanciesList.innerHTML = itemLi;
 }
 
+function handlePagination(totalNumber, searchInputResult, searchInputOneResult) {
+	$(paginator).pagination({
+		items: totalNumber,
+		itemsOnPage: showApiPerPage,
+		currentPage: currentPage,
+		onPageClick: function (pageNumber, event) {
+			currentPage = pageNumber;
+			getJobsAPI (searchInputResult, searchInputOneResult);
+		}
+	});
+}
 
 function getJobsAPI (searchInputResult, searchInputOneResult) {
 	var apiId = 'f79154d7';
