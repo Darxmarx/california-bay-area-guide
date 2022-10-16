@@ -29,6 +29,14 @@ function getJobsAPI (searchInputResult, searchInputOneResult) {
 		.catch(err => console.error(err));
 }
 
+lottie.loadAnimation({
+	container: document.querySelector(".icon-home"), // the dom element that will contain the animation
+	renderer: "svg",
+	loop: true,
+	autoplay: true,
+	path: "home.json" // the path to the animation json
+});
+
 searchIcon.addEventListener("click", function (e) {
 	e.preventDefault();
 	var searchInputResult = simpleSearch.value; //get the value from first column
