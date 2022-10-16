@@ -1,10 +1,14 @@
 var mainEl = document.querySelector("main");
 var searchIcon = document.querySelector("#search-btn"); //search button
-var simpleSearch = document.querySelector("#simple-search"); //search bar
-var simpleSearchOne = document.querySelector("#simple-search1"); //search bar
+var simpleSearch = document.querySelector("#simple-search"); //search bar (first column)
+var simpleSearchOne = document.querySelector("#simple-search1"); //search bar (second column)
 
-var simpleSearchResult = document.querySelector("#simple-search-result"); //search bar (result)
-var simpleSearchOneResult = document.querySelector("#simple-search1-result"); //search bar (result)
+
+var jobsresultEl = document.querySelector(".jobsresult");
+var iconHome = document.querySelector(".icon-home");
+var simpleSearchResult = document.querySelector("#simple-search-result"); //search bar (result) (first column)
+var simpleSearchOneResult = document.querySelector("#simple-search1-result"); //search bar (result) (second column)
+var searchIconResult = document.querySelector("#search-btn-result"); //search button (result)
 
 
 function getJobsAPI (searchInputResult, searchInputOneResult) {
