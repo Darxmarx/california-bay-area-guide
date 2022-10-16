@@ -236,6 +236,11 @@ nav select{
     letter-spacing: -0.408px;
     color: #FF9900;
 }
+
+button#search-btn {
+    background: #FF9900;
+}
+
 .search-btn{
     width: 134px;
     height: 45px;

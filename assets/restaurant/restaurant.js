@@ -24,7 +24,7 @@ function loadRestaurants() {
     data: { //dynamically adds in parameters
         location: "san-francisco", //always searches the San Francisco area for results
         categories: "restaurants", //always searches restaurants
-        limit: 10, //returns 10 results for whatever user searched
+        limit: 11, //returns 10 results for whatever user searched
         term: searchTerm.val() //plug in term from user input
     }
     }).then(function (response) {
