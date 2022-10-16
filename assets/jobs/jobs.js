@@ -1,10 +1,10 @@
+// jobs homepage section
 var mainEl = document.querySelector("main");
 var searchIcon = document.querySelector("#search-btn"); //search button
 var simpleSearch = document.querySelector("#simple-search"); //search bar (first column)
 var simpleSearchOne = document.querySelector("#simple-search1"); //search bar (second column)
 
-
-
+//display jobs result section
 var jobsresultEl = document.querySelector(".jobsresult");
 var iconHome = document.querySelector(".icon-home");
 var simpleSearchResult = document.querySelector("#simple-search-result"); //search bar (result) (first column)
@@ -17,47 +17,58 @@ var paginator = document.querySelector("#pagination");
 var showApiPerPage = 10;
 var currentPage = 1;
 
-
+// execute to stay at jobs homepage or result page
 function switchPage (returnHomepage) {
 	if (returnHomepage) {
+		//display jobs homepage
 		mainEl.classList.remove("hidden");
+		//hide jobs result page
 		jobsresultEl.classList.add("hidden");
 	}
 	else {
+		//hide jobs homepage
 		mainEl.classList.add("hidden");
+		//display jobs result page
 		jobsresultEl.classList.remove("hidden");
 	}
 }
 
+// when generate history record at side bar when search from homepage/result page
 function generateHistoryRecord (searchInputResult, searchInputOneResult) {
+	//get data from local storage
 	var historySearchList = JSON.parse(localStorage.getItem("historySearch") || "[]");
+	// add new data and push to the array
 	historySearchList.push(searchInputResult + ";" + searchInputOneResult);
+	// save data in the local storage
 	localStorage.setItem("historySearch", JSON.stringify(historySearchList));
-	var itemLi = "";
-	for (var i = 0; i < historySearchList.length; i++) {
-	 const item = historySearchList[i];
-	 itemLi += `<li class="cursor-pointer bg-slate-300 p-2 m-3">${item}</li>`;
+	var itemLi = ""; //history record list
+	for (var i = 0; i < historySearchList.length; i++) { // for loop for history record has been insert to list
+	 const item = historySearchList[i]; //insert value of list
+	 itemLi += `<li class="cursor-pointer bg-slate-300 p-2 m-3">${item}</li>`;//insert value of list and style in pointer
 	}
-	searchHistory.innerHTML = itemLi;
-	var searchHistoryLis = document.querySelectorAll(".search-history li");
+	searchHistory.innerHTML = itemLi; //list will be add into search history
+	var searchHistoryLis = document.querySelectorAll(".search-history li"); //set element for search-history li
    
-	for(let i=0;i<searchHistoryLis.length;i++){
-	 searchHistoryLis[i].addEventListener("click",function(){ 
-	  getJobsAPI (historySearchList[i].split(";")[0], historySearchList[i].split(";")[1]);
+	for(let i=0;i<searchHistoryLis.length;i++){ //for loop for li
+	 searchHistoryLis[i].addEventListener("click",function(){ //event for search history
+	  getJobsAPI (historySearchList[i].split(";")[0], historySearchList[i].split(";")[1]); //separate the search bar from first column and second by using split function
 	 });
 	}
 
    }
 
+// display vancancy result
 function displayVacancyResult (dataList) {
 	var itemLi = "";
 	for (var i = 0; i < dataList.length; i++) {
+	// get data from API
 	var item = dataList[i];
 	var redirect = item.redirect_url;
 	var company = item.company.display_name || "";
 	var position = item.title;
 	var location = item.location.display_name;
 	var description = item.description;
+	// API data will fit in to li
 	var liTemplate = `
 		<li
 			class="border rounded-md p-5 transition ease-in-out delay-150 bg-white hover:bg-cyan-50 hover:scale-105 hover:shadow-md duration-300"
@@ -74,32 +85,34 @@ function displayVacancyResult (dataList) {
 			</a>
 		</li>
 	`;
-	itemLi += liTemplate;
+	itemLi += liTemplate; // collect all the list
 }
-vacanciesList.innerHTML = itemLi;
+vacanciesList.innerHTML = itemLi; //contain all the li in ul
 }
 
+
+// handle pagination at the end of job result page
 function handlePagination(totalNumber, searchInputResult, searchInputOneResult) {
 	if(totalNumber===0){
-	 vacanciesEmptyEl.classList.remove("hidden");
-	 paginator.classList.add("hidden");
+	 	vacanciesEmptyEl.classList.remove("hidden");
+	 	paginator.classList.add("hidden");
 	}
 	else{
-	 vacanciesEmptyEl.classList.add("hidden");
-	 paginator.classList.remove("hidden");
-	 $(paginator).pagination({
-	  items: totalNumber,
-	  itemsOnPage: showApiPerPage,
-	  currentPage: currentPage,
-	  onPageClick: function (pageNumber, event) {
-	   currentPage = pageNumber;
-	   getJobsAPI (searchInputResult, searchInputOneResult);
-	  }
-	 });
+	 	vacanciesEmptyEl.classList.add("hidden");
+		paginator.classList.remove("hidden");
+		$(paginator).pagination({ //get from simplePagination library website
+			items: totalNumber,
+			itemsOnPage: showApiPerPage,
+			currentPage: currentPage,
+			onPageClick: function (pageNumber, event) {
+				currentPage = pageNumber;
+				getJobsAPI (searchInputResult, searchInputOneResult);
+			}
+	 	});
 	}
 }
 
-
+// jobs API
 function getJobsAPI (searchInputResult, searchInputOneResult) {
 	var apiId = 'f79154d7';
 	var apiKey = '2423d428da62311114e0eebc8ee7e7e8'
@@ -118,6 +131,7 @@ function getJobsAPI (searchInputResult, searchInputOneResult) {
 		.catch(err => console.error(err));
 }
 
+// lottie library
 lottie.loadAnimation({
 	container: document.querySelector(".icon-home"), // the dom element that will contain the animation
 	renderer: "svg",
@@ -126,10 +140,12 @@ lottie.loadAnimation({
 	path: "home.json" // the path to the animation json
 });
 
+// to click home icon for switch page
 iconHome.addEventListener("click", function () {
 	switchPage (true);
 });
 
+// click event for search icon - jobs homepage
 searchIcon.addEventListener("click", function (e) {
 	e.preventDefault();
 	var searchInputResult = simpleSearch.value; //get the value from first column
@@ -137,9 +153,10 @@ searchIcon.addEventListener("click", function (e) {
 	getJobsAPI (searchInputResult, searchInputOneResult);
 });
 
+// click event for search icon - jobs result page
 searchIconResult.addEventListener("click", function (e) {
 	e.preventDefault();
-	var searchInputResult = simpleSearchResult.value;
-	var searchInputOneResult = simpleSearchOneResult.value;
+	var searchInputResult = simpleSearchResult.value; //get the value from first column
+	var searchInputOneResult = simpleSearchOneResult.value; //get the value from second column
 	getJobsAPI (searchInputResult, searchInputOneResult);
 });
