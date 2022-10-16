@@ -7,10 +7,9 @@
     <!-- Tailwind js v.3 -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <!-- Simple Pagination css library -->
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.min.css"/>
+    <!-- lottie js library-->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="stylesheet" href="./jobs.css" />
     <title>Jobs</title>
 </head>
@@ -35,10 +34,10 @@
                     xmlns="http://www.w3.org/2000/svg"
                     >
                     <path
-                        fill-rule="evenodd"
+                    fill-rule="evenodd"
                         d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                         clip-rule="evenodd"
-                    ></path>
+                        ></path>
                     </svg>
                 </div>
                 <input
@@ -48,9 +47,9 @@
                     placeholder="job, company, title"
                     required
                 />
-                </div>
             </div>
-            <div class="flex w-full">
+        </div>
+        <div class="flex w-full">
                 <label for="simple-search" class="sr-only">Search</label>
                 <div class="relative w-full">
                 <div
@@ -67,7 +66,7 @@
                         fill-rule="evenodd"
                         d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                         clip-rule="evenodd"
-                    ></path>
+                        ></path>
                     </svg>
                 </div>
                 <input
@@ -76,7 +75,7 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="City, ZIP code"
                     required
-                />
+                    />
                 </div>
                 <button
                 id="search-btn"
@@ -89,7 +88,7 @@
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                >
+                    >
                     <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -98,8 +97,8 @@
                     ></path>
                 </svg>
                 <span class="sr-only">Search</span>
-                </button>
-            </div>
+            </button>
+        </div>
         </form>
         <!-- Google map for jobs search reference -->
         <div>
@@ -111,44 +110,46 @@
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-        </div>
-     </main>
-    <!-- Job result page -->
-    <section class="jobsresult container px-4 py-4 mx-auto hidden">
-        <div>
-            <!-- Return to jobs homepage icon -->
-            <div class="icon-home w-16 cursor-pointer mb-2"></div>
-            <!-- Two search bar for column, first column is for insert job, company, title; second column is for insert city and ZIP code -->
+                ></iframe>
+            </div>
+        </main>
+        <!-- Job result page -->
+        <section class="jobsresult container px-4 py-4 mx-auto hidden">
+            <div>
+                <!-- Return to jobs homepage icon -->
+                <div class="icon-home w-16 cursor-pointer mb-2">
+                    <a href="#">
+                        <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_acah1toy.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop autoplay></lottie-player>
+                    </a>
+                </div>
+            <!-- Two search column, first column is for insert job, company, title; second column is for insert city and ZIP code -->
             <form class="flex items-center mb-5">
                 <div class="flex w-full mr-3">
-                <label for="simple-search-result" class="sr-only">Search</label>
-                <div class="relative w-full">
-                    <div
-                    class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-                    >
-                    <svg
-                        aria-hidden="true"
-                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                        fill-rule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clip-rule="evenodd"
-                        ></path>
-                    </svg>
+                    <label for="simple-search-result" class="sr-only">Search</label>
+                    <div class="relative w-full">
+                        <div
+                        class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg
+                                aria-hidden="true"
+                                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                                >
+                                <path
+                                fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <input
+                        type="text"
+                        id="simple-search-result"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="job, company, title"
+                        required/>
                     </div>
-                    <input
-                    type="text"
-                    id="simple-search-result"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="job, company, title"
-                    required
-                    />
-                </div>
                 </div>
                 <div class="flex w-full">
                 <label for="simple-search1-result" class="sr-only">Search</label>
@@ -218,9 +219,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- simplePagination library js-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
-    <!-- lottie library js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
     <script src="./jobs.js"></script>
-    
 </body>
 </html>

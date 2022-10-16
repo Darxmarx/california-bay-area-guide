@@ -106,8 +106,7 @@ function handlePagination(totalNumber, searchInputResult, searchInputOneResult) 
 			currentPage: currentPage,
 			onPageClick: function (pageNumber, event) {
 				currentPage = pageNumber;
-				getJobsAPI (searchInputResult, searchInputOneResult);
-			}
+				getJobsAPI (searchInputResult, searchInputOneResult); }
 	 	});
 	}
 }
@@ -126,19 +125,10 @@ function getJobsAPI (searchInputResult, searchInputOneResult) {
 			var totalNumber = response.count;
 			displayVacancyResult (dataList);
 			generateHistoryRecord (searchInputResult, searchInputOneResult);
-
+			handlePagination(totalNumber, searchInputResult, searchInputOneResult);
 		})
 		.catch(err => console.error(err));
 }
-
-// lottie library
-lottie.loadAnimation({
-	container: document.querySelector(".icon-home"), // the dom element that will contain the animation
-	renderer: "svg",
-	loop: true,
-	autoplay: true,
-	path: "home.json" // the path to the animation json
-});
 
 // to click home icon for switch page
 iconHome.addEventListener("click", function () {
