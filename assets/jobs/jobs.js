@@ -100,7 +100,6 @@ function handlePagination(totalNumber, searchInputResult, searchInputOneResult) 
 }
 
 
-
 function getJobsAPI (searchInputResult, searchInputOneResult) {
 	var apiId = 'f79154d7';
 	var apiKey = '2423d428da62311114e0eebc8ee7e7e8'
@@ -125,6 +124,10 @@ lottie.loadAnimation({
 	loop: true,
 	autoplay: true,
 	path: "home.json" // the path to the animation json
+});
+
+iconHome.addEventListener("click", function () {
+	switchPage (true);
 });
 
 searchIcon.addEventListener("click", function (e) {
