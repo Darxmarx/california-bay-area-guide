@@ -34,17 +34,19 @@ function loadRestaurants() {
 
 //generates and appends elements based on data from loadRestaurants
 function displayRestaurants() {
-
+    var restEl = document.createElement("div");
+    var titleEl = document.createElement("span");
+    
     for (var i = 0; i <= 9; i++) {
-        var restName = root.businesses[i].name;
+        var restName = response.businesses[i].name;
+        console.log(response.businesses[i].name);
 
-        var restEl = document.createElement("div");
-        var titleEl = document.createElement("span");
+        
         titleEl.textContent = restName;
 
-        restEl.appendChild(titleEl);
+        
     }
-
+    restEl.appendChild(titleEl);
     restaurantContainerEl.appendChild(restEl);
 }
 
