@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind js v.3 -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!-- Simple Pagination css library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.min.css"/>
+    <!-- lottie js library-->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="./jobs.css" />
+    <title>Jobs</title>
+</head>
+<body>
+    <!-- Homepage of jobs-->
+    <main class="h-screen flex justify-center items-center">
+        <div class="jobspage">
+            <h1 class="ui block header mb-5">Jobs</h1>
+        <!-- Two search bars for column, first column is for inserting job, company, title; second column is for inserting city & ZIP code -->
+        <form class="flex items-center mb-5">
+            <div class="flex w-full mr-3">
+                <label for="simple-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                <div
+                    class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+                >
+                    <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                    fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </div>
+                <input
+                    type="text"
+                    id="simple-search"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="job, company, title"
+                    required
+                />
+            </div>
+        </div>
+        <div class="flex w-full">
+                <label for="simple-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                <div
+                    class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+                >
+                    <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                        fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </div>
+                <input
+                    type="text"
+                    id="simple-search1"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="City, ZIP code"
+                    required
+                    />
+                </div>
+                <button
+                id="search-btn"
+                type="submit"
+                class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                </svg>
+                <span class="sr-only">Search</span>
+            </button>
+        </div>
+        </form>
+        <!-- Google map as jobs search reference -->
+        <div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612503.0825921164!2d-123.54423682056256!3d37.87385748955031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808583a3a688d7b5%3A0x8c891b8457461fa9!2sSan%20Francisco%20Bay%20Area%2C%20CA!5e0!3m2!1sen!2sus!4v1665670439303!5m2!1sen!2sus"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </main>
+        <!-- Job result page -->
+        <section class="jobsresult container px-4 py-4 mx-auto hidden">
+            <div>
+                <!-- Return to jobs homepage icon -->
+                <div class="icon-home w-16 cursor-pointer mb-2">
+                    <a href="#">
+                        <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_acah1toy.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop autoplay></lottie-player>
+                    </a>
+                </div>
+            <!-- Two search columns, first column is for inserting job, company, title; second column is for inserting city and ZIP code -->
+            <form class="flex items-center mb-5">
+                <div class="flex w-full mr-3">
+                    <label for="simple-search-result" class="sr-only">Search</label>
+                    <div class="relative w-full">
+                        <div
+                        class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg
+                                aria-hidden="true"
+                                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                                >
+                                <path
+                                fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <input
+                        type="text"
+                        id="simple-search-result"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="job, company, title"
+                        required/>
+                    </div>
+                </div>
+                <div class="flex w-full">
+                <label for="simple-search1-result" class="sr-only">Search</label>
+                <div class="relative w-full">
+                    <div
+                    class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+                    >
+                    <svg
+                        aria-hidden="true"
+                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                        fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                    </div>
+                    <input
+                    type="text"
+                    id="simple-search1-result"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="City, ZIP code"
+                    required
+                    />
+                </div>
+                <button
+                    id="search-btn-result"
+                    type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                    <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+                </div>
+            </form>
+        </div>
+        <div class="flex flex-row gap-4">
+            <!-- Record history search -->
+            <ul class="search-history basis-3/12"></ul>
+            <div class="basis-9/12">
+            <!-- Display job result list -->
+                <ul class="vacancies-list grid grid-cols-1 gap-4"></ul>
+                <p class="empty-result empty-result border rounded-md text-center py-24">Sorry! No result found :(</p>
+            <!-- Pagination -->
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </section>
+    <!-- jQuery library js (with simplePagination)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- simplePagination library js-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
+    <script src="./jobs.js"></script>
+</body>
+</html>
