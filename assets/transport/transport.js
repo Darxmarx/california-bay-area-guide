@@ -20,11 +20,6 @@ function fetchBart (station) {
   .then( (response) => {
     console.log(localStg);
     if (response.ok) {
-      // if (localStg.includes(station) === false){// it will check if the name already exists
-      //   localStg[localStg.length] = station; //save the station name in the last index of the array
-      //   console.log(localStg);
-      //   localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
-      // }
 
           response.json().then((data) =>{
           console.log(data);
@@ -91,7 +86,7 @@ function setAbbreviation(station){
   if (localStg.includes(station) === false &&  stationFullName.includes(station) === true){// it will check if the name already exists
     localStg[localStg.length] = station; //save the station name in the last index of the array
     console.log(localStg);
-    if(localStg.length > 5) {
+    if(localStg.length > 5) {// it will remove the first index of the array
       localStg.shift();
     }
     localStorage.setItem("station", JSON.stringify(localStg));//Save the info inside the localStorage
@@ -138,10 +133,6 @@ function addStationToDisplay(){
 
   for (var i = 0; i <localStg.length; i++){
     var stationStg = localStg[i];
-
-    // if (localStg.length >= 4){
-    //   localStg.shift();
-    // }
     var button = document.createElement("button");
     button.textContent = stationStg;
     button.addEventListener("click", function(event){// add the event listner in the every button
