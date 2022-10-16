@@ -9,6 +9,22 @@ var iconHome = document.querySelector(".icon-home");
 var simpleSearchResult = document.querySelector("#simple-search-result"); //search bar (result) (first column)
 var simpleSearchOneResult = document.querySelector("#simple-search1-result"); //search bar (result) (second column)
 var searchIconResult = document.querySelector("#search-btn-result"); //search button (result)
+var searchHistory = document.querySelector(".search-history"); // search history record
+
+
+
+function generateHistoryRecord (searchInputResult, searchInputOneResult) {
+	var historySearchList = JSON.parse(localStorage.getItem("historySearch") || "[]");
+	historySearchList.push(searchInputResult + ";" + searchInputOneResult);
+	localStorage.setItem("historySearch", JSON.stringify(historySearchList));
+	var itemLi = "";
+	for (var i = 0; i < historySearchList.length; i++) {
+	 const item = historySearchList[i];
+	 itemLi += `<li">${item}</li>`;
+	}
+	searchHistory.innerHTML = itemLi;
+
+   }
 
 
 function getJobsAPI (searchInputResult, searchInputOneResult) {
