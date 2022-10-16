@@ -27,29 +27,29 @@ function loadRestaurants() {
         limit: 10, //returns 10 results for whatever user searched
         term: searchTerm.val() //plug in term from user input
     }
-    /*success: function(data) {
-        console.log(data);
-        $.each(data, function(index, element) {
-            $("body").append($("<div>", {
-                text: element.name
-            }));
-        });
-    }*/
     }).then(function (response) {
-        console.log(response);
+        console.log(response); //checking if object was successfully retrieved
+        var returnData = JSON.parse(response);
 
         //generates and appends elements based on response
         var restEl = document.createElement("div");
-        var titleEl = document.createElement("span");
+        var titleEl = document.createElement("p");
     
-        for (var i = 0; i <= response.businesses.length; i++) {
-            var restName = response.businesses[i].name;
+        for (var i = 0; i <= returnData.businesses.length; i++) {
+            var restName = returnData.businesses[i].name;
             console.log(restName);
+            /*titleEl.innerHTML = restName;
+            restEl.append(titleEl);
+            restaurantContainerEl.append(restEl);*/
 
-            titleEl.textContent = restName;
+            var restImg = returnData.businesses[i].image_url;
+            console.log(restImg);
+
+            var restUrl = returnData.businesses[i].url;
+            console.log(restUrl);
+
         }
-        restEl.appendChild(titleEl);
-        restaurantContainerEl.appendChild(restEl);
+        
     })
 }
 
