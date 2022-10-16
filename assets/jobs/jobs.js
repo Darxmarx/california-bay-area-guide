@@ -17,7 +17,7 @@ var paginator = document.querySelector("#pagination");
 var showApiPerPage = 10;
 var currentPage = 1;
 
-// execute to stay at jobs homepage or result page
+// execute to switch at jobs homepage or result page
 function switchPage (returnHomepage) {
 	if (returnHomepage) {
 		//display jobs homepage
@@ -33,7 +33,7 @@ function switchPage (returnHomepage) {
 	}
 }
 
-// when generate history record at side bar when search from homepage/result page
+// generating history record at left-sided bar after search from homepage/result page
 function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	//get data from local storage
 	var historySearchList = JSON.parse(localStorage.getItem("historySearch") || "[]");
@@ -42,7 +42,7 @@ function generateHistoryRecord (searchInputResult, searchInputOneResult) {
 	// save data in the local storage
 	localStorage.setItem("historySearch", JSON.stringify(historySearchList));
 	var itemLi = ""; //history record list
-	for (var i = 0; i < historySearchList.length; i++) { // for loop for history record has been insert to list
+	for (var i = 0; i < historySearchList.length; i++) { // use for loop to add history record into list
 	 const item = historySearchList[i]; //insert value of list
 	 itemLi += `<li class="cursor-pointer bg-slate-300 p-2 m-3">${item}</li>`;//insert value of list and style in pointer
 	}
