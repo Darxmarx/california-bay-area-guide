@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
-<div class="header-nav">
+<div>
     <nav>
-        <div class="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-2">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 right-0 flex items-center md:hidden">
                     <!-- Mobile menu button-->
@@ -55,7 +55,7 @@
                     <div class="hidden md:ml-6 md:block">
                         <div class="flex space-x-4 items-center">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="#" class="nav-link active-nav px-3 py-2 rounded-md font-medium" aria-current="page">
+                            <a href="#" class="nav-link px-3 py-2 rounded-md font-medium" aria-current="page">
                                 <span class="mr-2"><i class="fa-solid fa-house"></i></span>Home
                             </a>
 
@@ -63,13 +63,13 @@
                                 <span class="mr-2"><i class="fa-solid fa-utensils"></i></span>Restaurant
                             </a>
 
-                            <a href="bart.html" class="nav-link px-3 py-2 rounded-md font-medium">
+                            <a href="bart.html" class="nav-link active-nav px-3 py-2 rounded-md font-medium">
                                 <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
                             </a>
 
                             <a class="nav-link px-3 py-2 rounded-md font-medium">
                                 <div class="relative">
-                                    <select class="appearance-none py-1 px-2 bg-white" name="whatever">
+                                    <select class="appearance-none py-1 px-2 bg-white" name="whatever" id="frm-whatever">
                                         <option value="" selected disabled>City</option>
                                         <option value="1">City 1</option>
                                         <option value="2">City 2</option>
@@ -92,7 +92,7 @@
         <div class="hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pt-2 pb-3">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="#" class="nav-link active-nav px-3 py-2 rounded-md font-medium block" aria-current="page">
+                <a href="#" class="nav-link px-3 py-2 rounded-md font-medium block" aria-current="page">
                     <span class="mr-2"><i class="fa-solid fa-house"></i></span>Home
                 </a>
 
@@ -100,13 +100,13 @@
                     <span class="mr-2"><i class="fa-solid fa-utensils"></i></span>Restaurant
                 </a>
 
-                <a href="bart.html" class="nav-link px-3 py-2 rounded-md font-medium block">
+                <a href="bart.html" class="nav-link active-nav px-3 py-2 rounded-md font-medium block">
                     <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
                 </a>
 
                 <a class="nav-link px-3 py-2 rounded-md font-medium" block>
                     <div class="relative">
-                        <select class="appearance-none py-1 px-2 bg-white" name="whatever" id="frm-whatever">
+                        <select class="appearance-none py-1 px-2 bg-white" name="whatever">
                             <option value="" selected disabled>City</option>
                             <option value="1">City 1</option>
                             <option value="2">City 2</option>
@@ -122,156 +122,38 @@
             </div>
         </div>
     </nav>
-
-    <div class="index-header">
-        <div class="px-5">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 grid-flow-row grid-">
-                <div class="row-start-1">
-                    <div class="flex">
-                        <h1>Explore <br> Beautiful <br> California!</h1>
-                        <div class="vector-icon relative">
-                            <img
-                                    src="assets/images/heart-vector.png"
-                                    alt="heart-vector"
-                            />
-                            <span class="flying-plane"
-                            ><i class="fa-solid fa-plane-up"></i
-                            ></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h2>Your one stop guide to california.</h2>
-                    </div>
-                    <!-- ------------------------ creted by Ying -------------------- -->
-                    <div class="current-main-div card">
-                        <div class="weather">
-                          <h3 class="mb-3"></h3>
-                          <div>Temp: <span class="temp"></span>°F</div>
-                          <div class="flex">
-                              <img src="" alt="" class="icon"/>
-                          </div>
-                          <div>Humidity: <span class="humidity"></span>%</div>
-                          <div>Wind speed: <span class="wind"></span>MPH</div>
-                        </div>
-                      </div>
-                      <!-- ------------------------ creted by Ying -------------------- -->
-
-                </div>
-                <div class="offset-lg-1 flex items-center">
-                    <div class="header-img">
-                        <img
-                                src="assets/images/header-img.png"
-                                alt="searching for Restaurant"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
-<section class="popular-restaurant py-10">
-    <div class="px-5">
-        <div class="flex justify-between popular-search">
-            <div class="popular-restaurant-div">
-                <h2 class="popular-heading">Popular restaurants</h2>
-                <h3 class="popular-sub-heading orange">
-                    explore popular eateries in california!
-                </h3>
-            </div>
-            <div class="align-end">
-                <form action="" class="form-search relative">
-                    <input
-                            type="text"
-                            placeholder="Search"
-                            class="form-control"
-                            name=""
-                            id=""
-                    />
-                    <span class="absolute"
-                    ><i class="fa-solid fa-magnifying-glass"></i
-                    ></span>
-                </form>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
-            <div class="">
-                <div class="card-rating">
-                    <div class="img-div">
-                        <img
-                                src="assets/images/image-placeholder.png"
-                                alt="image-placeholder"
-                        />
-                    </div>
-                    <div class="flex justify-between items-center px-2">
-                        <p>restaurant name</p>
-                        <p class="rating-text">rating</p>
-                    </div>
+<section class="py-10 mx-auto max-w-7xl px-2">
+    <h3 class="default-heading">Bart</h3>
+    <div class="restaurant-search py-5 flex sm:justify-center relative">
+        <div class="align-end">
+            <form action="" class="form-search relative flex items-center">
+                <input
+                        type="text"
+                        placeholder="Search"
+                        class="form-control"
+                        name=""
+                        id=""
+                />
+                <div>
+                    <button class="search-btn">Search</button>
                 </div>
-            </div>
-            <div class="">
-                <div class="card-rating">
-                    <div class="img-div">
-                        <img
-                                src="assets/images/image-placeholder.png"
-                                alt="image-placeholder"
-                        />
-                    </div>
-                    <div class="flex justify-between items-center px-2">
-                        <p>restaurant name</p>
-                        <p class="rating-text">rating</p>
-                    </div>
-                </div>
-            </div>
-            <div class="">
-                <div class="card-rating">
-                    <div class="img-div">
-                        <img
-                                src="assets/images/image-placeholder.png"
-                                alt="image-placeholder"
-                        />
-                    </div>
-                    <div class="flex justify-between items-center px-2">
-                        <p>restaurant name</p>
-                        <p class="rating-text">rating</p>
-                    </div>
-                </div>
-            </div>
-            <div class="">
-                <div class="card-rating">
-                    <div class="img-div">
-                        <img
-                                src="assets/images/image-placeholder.png"
-                                alt="image-placeholder"
-                        />
-                    </div>
-                    <div class="flex justify-between items-center px-2">
-                        <p>restaurant name</p>
-                        <p class="rating-text">rating</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row text-end mt-3">
-            <div>
-                <a href="" class="see-more orange">See more</a>
-            </div>
+                <span class="absolute"
+                ><i class="fa-solid fa-magnifying-glass"></i
+                ></span>
+            </form>
         </div>
     </div>
-</section>
 
-<section class="restaurent-explores pb-10">
-    <div class="restaurent-explores-wrap">
-        <div class="px-5">
-            <div class="explores-div relative flex items-center">
-                <a href="" class="explores-anchor"></a>
-                <div class="img-div">
-                    <img src="assets/images/cutlery.png" alt="restaunts" />
-                </div>
-                <p class="orange mb-0">4000+ restaunts to explore!</p>
-            </div>
-        </div>
+    <div class="api-section sec-1">
+
     </div>
+    <div class="api-section sec-2">
+
+    </div>
+
+
 </section>
 
 
@@ -285,9 +167,5 @@
     });
 
 </script>
-<script src="./script.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" ></script>
-
-
 </body>
 </html>
