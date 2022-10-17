@@ -1,167 +1,105 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <link rel="icon" href="assets/images/golden-gate-bridge.png">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>newbieBay</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/css/fontawesome.min.css"/>
-    <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/js/fontawesome.min.js"/>
-    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css"/>
-    <link rel="stylesheet" href="./assets/transport/transport.css"/>
-</head>
-<body>
-<div>
-    <nav>
-        <div class="mx-auto max-w-7xl px-2">
-            <div class="relative flex h-16 items-center justify-between">
-                <div class="absolute inset-y-0 right-0 flex items-center md:hidden">
-                    <!-- Mobile menu button-->
-                    <button type="button" id="menu-button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <!--
-                          Icon when menu is closed.
 
-                          Heroicon name: outline/bars-3
+var station = $('#stName');
+var dest = document.querySelector(".dest");
 
-                          Menu open: "hidden", Menu closed: "block"
-                        -->
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                        <!--
-                          Icon when menu is open.
+var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb",	"bayf",	"bery",	"cast",	"civc",	"cols",	"colm",	"conc",	"daly",	"dbrk",	"dubl",	"deln",	"plza",	"embr",	"frmt",	"ftvl",	"glen",	"hayw",	"lafy",	"lake",	"mcar",	"mlbr",	"mlpt",	"mont",	"nbrk",	"ncon",	"oakl",	"orin",	"pitt",	"pctr",	"phil",	"powl",	"rich",	"rock",	"sbrn",	"sfia",	"sanl",	"shay",	"ssan",	"ucty",	"warm",	"wcrk",	"wdub",	"woak"];
 
-                          Heroicon name: outline/x-mark
+var stationFullName = ["12th St. Oakland City Center",	"16th St. Mission (SF)",	"19th St. Oakland",	"24th St. Mission (SF)",	"Ashby (Berkeley)",	"Antioch",	"Balboa Park (SF)",	"Bay Fair (San Leandro)",	"Berryessa / North San Jose",	"Castro Valley",	"Civic Center (SF)",	"Coliseum",	"Colma",	"Concord",	"Daly City",	"Downtown Berkeley",	"Dublin/Pleasanton",	"El Cerrito del Norte",	"El Cerrito Plaza",	"Embarcadero (SF)",	"Fremont",	"Fruitvale (Oakland)",	"Glen Park (SF)",	"Hayward",	"Lafayette",	"Lake Merritt (Oakland)",	"MacArthur (Oakland)",	"Millbrae",	"Milpitas",	"Montgomery St. (SF)",	"North Berkeley",	"North Concord/Martinez",	"Oakland Int'l Airport",	"Orinda",	"Pittsburg/Bay Point",	"Pittsburg Center",	"Pleasant Hill",	"Powell St. (SF)",	"Richmond",	"Rockridge (Oakland)",	"San Bruno",	"San Francisco Int'l Airport",	"San Leandro",	"South Hayward",	"South San Francisco",	"Union City",	"Warm Springs/South Fremont",	"Walnut Creek",	"West Dublin",	"West Oakland",
+];
 
-                          Menu open: "block", Menu closed: "hidden"
-                        -->
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex flex-1 items-center justify-between">
-                    <div class="flex flex-shrink-0 items-center">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="assets/images/golden-gate-bridge.png" alt="logo newbie"/>
-                            newbie<span class="orange">Bay</span>
-                        </a>
-                    </div>
-                    <div class="hidden md:ml-6 md:block">
-                        <div class="flex space-x-4 items-center">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="./index.html" class="nav-link px-3 py-2 rounded-md font-medium" aria-current="page">
-                                <span class="mr-2"><i class="fa-solid fa-house"></i></span>Home
-                            </a>
+function fetchBart (station) {
 
-                            <a href="restaurant.html" class="nav-link px-3 py-2 rounded-md font-medium">
-                                <span class="mr-2"><i class="fa-solid fa-utensils"></i></span>Restaurant
-                            </a>
+  var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
+  fetch("https://api.bart.gov/api/etd.aspx?cmd=etd&orig="+station+"&key="+apiKey)
 
-                            <a href="bart.html" class="nav-link active-nav px-3 py-2 rounded-md font-medium">
-                                <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
-                            </a>
+  .then( (response) => {
 
-                            <a href="./jobs new.html" class="nav-link px-3 py-2 rounded-md font-medium">
-                                <span class="mr-2"><i class="fa-solid fa-briefcase"></i></span>Jobs
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    if (response.ok) {
+    // console.log(response);
 
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pt-2 pb-3">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="./index.html" class="nav-link px-3 py-2 rounded-md font-medium block" aria-current="page">
-                    <span class="mr-2"><i class="fa-solid fa-house"></i></span>Home
-                </a>
+          response.json().then((data) =>{
+          console.log(data);
+          displayNextBart(data);
 
-                <a href="restaurant.html" class="nav-link px-3 py-2 rounded-md font-medium block">
-                    <span class="mr-2"><i class="fa-solid fa-utensils"></i></span>Restaurant
-                </a>
+          });
+        } else {
+          alert('Error: Please select the correct staion from the autocomplete fild.');
+          return;
+        }
+      })
+}
 
-                <a href="bart.html" class="nav-link active-nav px-3 py-2 rounded-md font-medium block">
-                    <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
-                </a>
+function displayNextBart(nextBart) {
+  var date = nextBart.root.date; // check the today date
+  var time1 = nextBart.root.time;  // check the time
+  var stationName = nextBart.root.station[0].name; // check the station name
+    // ################################################
+  var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
+  // ################################################
+  dest.textContent = stationName;// This will add tge station name the user is searchin for
 
-                <a href="./jobs new.html" class="nav-link px-3 py-2 rounded-md font-medium">
-                    <span class="mr-2"><i class="fa-solid fa-briefcase"></i></span>Jobs
-                </a>
-            </div>
-        </div>
-    </nav>
-</div>
+  // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.
+  for (var i = 0; i < loopEtd.length; i++) {
 
-<section class="py-10 mx-auto max-w-7xl px-2">
-    <h3 class="default-heading">Bart</h3>
-    <div class="restaurant-search py-5 flex sm:justify-center relative">
-        <div class="align-end search">
-            <form action="" class="form-search relative flex items-center">
-                <input
-                        type="text"
-                        placeholder="Search"
-                        class="form-control search-bar"
-                        name=""
-                        id="station"
-                />
-                <div>
-                    <button type="button" class="search-btn ">Search</button>
-                </div>
-                <span class="absolute"
-                ><i class="fa-solid fa-magnifying-glass"></i
-                ></span>
-            </form>
-        </div>
-    </div>
+    var loopEstimate = nextBart.root.station[0].etd[i].estimate;// loop for time
+    var finalDestination = nextBart.root.station[0].etd[i].destination; // display the final dest name
 
-    <div class="api-section sec-1">
-        <div>
-          <h2 class="searcHistory">Search history</h2>
-        </div>
-        <div class="stationContainer" id="stationContainer"></div>
-      </div>
-      <div class="api-section sec-2">
-        <div class="addItCenter">
-          <h3 class="stationName"></h3>
-        </div>
-        <div class="dest"></div>
-        <div class="bartMap">
-            <div>
-                <h2 class="bartDesc">Bart Map</h2>
-            </div>
-            <div class="bartMap1">
-                <img class="bartMapImg" src="./assets/images/bartMap.png" alt="Bart Map" />
-            </div>
-            
-        </div>
-      </div>
+    var divCard = document.createElement("div");// creates a div that will add the API infomration
+    var h3 = document.createElement("h3"); // create a h3 tag to be linked to the destination name
+    h3.textContent = "Final destination: " + finalDestination;
+    dest.appendChild(divCard);
+    divCard.appendChild(h3);
+    
+    // the second for loop is to iterate over the nested array, so I will be able to display to the user the departure time and also the next bart available.
+    for(var j = 0; j < loopEstimate.length; j++ ) {
+      var h4 = document.createElement("h4");
+      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;// Check the min
+      var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform; // Check platf
+      // create if statment, as I want to display the for the first time as Departure in and the second time to display as NEXT BART
+      if (j === 0) {
+        h4.textContent = "Departure in: " + nextBartTime + ", Platform: " + platformNumb;
+        divCard.appendChild(h4);
+      } else {
+        h4.textContent = "Next BART in: " + nextBartTime + ", Platform: " + platformNumb;
+        divCard.appendChild(h4);
+        j++;
+      }
+    }
+  }
+  //  console.log(date, stationName,time1,platformNumb);
+  //  console.log(loopEtd);
+}
+
+// Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
+function setAbbreviation(station){
+  var stationAbbr = "";
+  for (var i = 0; i < stationFullName.length; i++){
+    if (station === stationFullName[i]){
+      stationAbbr = stationAbbreviation[i];
+    }
+    
+  }
+  console.log("This is the Statoin Abbreviation: " + stationAbbr);
+  fetchBart(stationAbbr);
+}
+
+// setAbbreviation("Millbrae");
 
 
-</section>
-
-
-<script>
-    const button = document.querySelector('#menu-button');
-    const menu = document.querySelector('#mobile-menu');
-
-
-    button.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
+// Create a autofill menu, so the user can chose what is the station they want, the reason we are creating in this way as the dart require the station name abreviation.
+$(function() {
+  var staionAvailable = stationFullName;
+    $("#station").autocomplete({
+      source: staionAvailable
     });
+  } );
 
-</script>
-<script src="./assets/transport/transport.js"></script>
-</body>
-</html>
+function search(){
+  setAbbreviation(document.querySelector(".search-bar").value);
+}
+
+document.querySelector(".search button").addEventListener("click", function(){
+  search();
+});
+
+
