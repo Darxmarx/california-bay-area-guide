@@ -116,7 +116,7 @@ function handlePagination(totalNumber, searchInputResult, searchInputOneResult) 
 function getJobsAPI (searchInputResult, searchInputOneResult) {
 	var apiId = 'f79154d7';
 	var apiKey = '2423d428da62311114e0eebc8ee7e7e8'
-	var jobsApiUrl = `http://api.adzuna.com/v1/api/jobs/us/search/${currentPage}?app_id=${apiId}&app_key=${apiKey}&results_per_page=${showApiPerPage}&what=${searchInputResult}&where=${searchInputOneResult}&content-type=application/json`;
+	var jobsApiUrl = `https://api.adzuna.com/v1/api/jobs/us/search/${currentPage}?app_id=${apiId}&app_key=${apiKey}&results_per_page=${showApiPerPage}&what=${searchInputResult}&where=${searchInputOneResult}&content-type=application/json`;
 
 	fetch(jobsApiUrl)
 		.then(response => response.json())
