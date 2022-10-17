@@ -34,7 +34,3 @@ function displayWeather(cityName) {
 
 displayWeather("San Francisco");
  
-
-
-
-
