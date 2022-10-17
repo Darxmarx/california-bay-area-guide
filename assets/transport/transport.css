@@ -307,6 +307,18 @@ h2.searcHistory {
     color: #5b5b5b;
 }
 
+.bartMap {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.bartMap1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .h3style {
     font-weight: bolder;
     color: #5b5b5b;
