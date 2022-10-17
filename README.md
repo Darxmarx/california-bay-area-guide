@@ -18,7 +18,7 @@ Our group's website, newbieBay, is founded upon numerous profound questions many
 
 ![website](./assets/images/gif1.gif "website gif demo 1")
 <br/>
-![website](./assets/images/png.png) "website bart demo")
+![website](./assets/images/png.png "website bart demo")
 <br/>
 ![website](./assets/images/gif2.gif "website gif demo 2")
 
