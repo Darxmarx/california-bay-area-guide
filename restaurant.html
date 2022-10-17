@@ -8,13 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>newbieBay</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/css/fontawesome.min.css"/>
-    <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/js/fontawesome.min.js"/>
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="assets/restaurant/restaurant.css"/>
 </head>
 <body>
+    <div class="modal" id="dialog">
+        <p>
+            Before searching for restaurants, please visit 
+            <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">this link</a> and click the "Request temporary access to the demo server" button. 
+            <br/>
+            Then, you may close this dialogue and begin your search!
+        </p>
+    </div>
 <div>
     <nav>
         <div class="mx-auto max-w-7xl px-2">
@@ -55,7 +62,7 @@
                     <div class="hidden md:ml-6 md:block">
                         <div class="flex space-x-4 items-center">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="#" class="nav-link px-3 py-2 rounded-md font-medium" aria-current="page">
+                            <a href="./index.html" class="nav-link px-3 py-2 rounded-md font-medium" aria-current="page">
                                 <span class="mr-2"><i class="fa-solid fa-house"></i></span>Home
                             </a>
 
@@ -63,24 +70,12 @@
                                 <span class="mr-2"><i class="fa-solid fa-utensils"></i></span>Restaurant
                             </a>
 
-                            <a href="bart.html" class="nav-link px-3 py-2 rounded-md font-medium">
+                            <a href="./bart.html" class="nav-link px-3 py-2 rounded-md font-medium">
                                 <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
                             </a>
 
-                            <a class="nav-link px-3 py-2 rounded-md font-medium">
-                                <div class="relative">
-                                    <select class="appearance-none py-1 px-2 bg-white" name="whatever" id="frm-whatever">
-                                        <option value="" selected disabled>City</option>
-                                        <option value="1">City 1</option>
-                                        <option value="2">City 2</option>
-                                        <option value="3">City 3</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-white">
-                                        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                        </svg>
-                                    </div>
-                                </div>
+                            <a href="./jobs new.html" class="nav-link px-3 py-2 rounded-md font-medium">
+                                <span class="mr-2"><i class="fa-solid fa-briefcase"></i></span>Jobs
                             </a>
                         </div>
                     </div>
@@ -100,24 +95,12 @@
                     <span class="mr-2"><i class="fa-solid fa-utensils"></i></span>Restaurant
                 </a>
 
-                <a href="bart.html" class="nav-link px-3 py-2 rounded-md font-medium block">
+                <a href="./bart.html" class="nav-link px-3 py-2 rounded-md font-medium block">
                     <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
                 </a>
 
-                <a class="nav-link px-3 py-2 rounded-md font-medium" block>
-                    <div class="relative">
-                        <select class="appearance-none py-1 px-2 bg-white" name="whatever">
-                            <option value="" selected disabled>City</option>
-                            <option value="1">City 1</option>
-                            <option value="2">City 2</option>
-                            <option value="3">City 3</option>
-                        </select>
-                        <div class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-white">
-                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
-                    </div>
+                <a href="./jobs new.html" class="nav-link px-3 py-2 rounded-md font-medium">
+                    <span class="mr-2"><i class="fa-solid fa-briefcase"></i></span>Jobs
                 </a>
             </div>
         </div>
@@ -127,9 +110,9 @@
 <section class="py-10 mx-auto max-w-7xl px-2">
     <h3 class="default-heading">Restaurant</h3>
     <div class="restaurant-search py-5 flex sm:justify-center relative">
-        <div class="absolute right-0 top-8" >
+        <!--<div class="absolute right-0 top-8" >
             <button> <span class="mr-2 orange"><i class="fa fa-filter"></i></span>filter</button>
-        </div>
+        </div>-->
         <div class="align-end">
             <form action="" class="form-search relative flex items-center">
                 <input
@@ -137,10 +120,10 @@
                         placeholder="Search"
                         class="form-control"
                         name=""
-                        id=""
+                        id="search-term"
                 />
                 <div>
-                    <button class="search-btn">Search</button>
+                    <button type="button" class="search-btn" id="search-btn">Search</button>
                 </div>
                 <span class="absolute"
                 ><i class="fa-solid fa-magnifying-glass"></i
@@ -150,172 +133,124 @@
     </div>
 
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+    <div id="rest-grid" class="invisible grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-0"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-0"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-1"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-1"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-2"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-2"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-3"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-3"></p>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="card-rating">
+                <div class="img-div"></a>
+                    <p id="rest-img-4"></p>
+                </div>
+                <div class="flex justify-between items-center px-2">
+                    <p id="rest-name-4"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-5"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-5"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-6"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-6"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-7"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-7"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-8"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-8"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-9"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-9"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-10"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-10"></p>
                 </div>
             </div>
         </div>
         <div class="">
             <div class="card-rating">
                 <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
+                    <p id="rest-img-11"></p>
                 </div>
                 <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
-                </div>
-            </div>
-        </div>
-        <div class="">
-            <div class="card-rating">
-                <div class="img-div">
-                    <img
-                            src="assets/images/image-placeholder.png"
-                            alt="image-placeholder"
-                    />
-                </div>
-                <div class="flex justify-between items-center px-2">
-                    <p>restaurant name</p>
-                    <p class="rating-text">rating</p>
+                    <p id="rest-name-11"></p>
                 </div>
             </div>
         </div>
@@ -333,5 +268,10 @@
     });
 
 </script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="./assets/restaurant/restaurant.js"></script>
 </body>
 </html>
+

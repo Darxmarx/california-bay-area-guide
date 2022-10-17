@@ -67,21 +67,9 @@
                                 <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
                             </a>
 
-                            <a class="nav-link px-3 py-2 rounded-md font-medium">
-                                <div class="relative">
-                                    <select class="appearance-none py-1 px-2 bg-white" name="whatever">
-                                        <option value="" selected disabled>City</option>
-                                        <option value="1">City 1</option>
-                                        <option value="2">City 2</option>
-                                        <option value="3">City 3</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-white">
-                                        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </a>
+                            <a href="./jobs new.html" class="nav-link px-3 py-2 rounded-md font-medium">
+                              <span class="mr-2"><i class="fa-solid fa-briefcase"></i></span>Jobs
+                          </a>
                         </div>
                     </div>
                 </div>
@@ -104,21 +92,9 @@
                     <span class="mr-2"><i class="fa-solid fa-train"></i></span>Bart
                 </a>
 
-                <a class="nav-link px-3 py-2 rounded-md font-medium" block>
-                    <div class="relative">
-                        <select class="appearance-none py-1 px-2 bg-white" name="whatever" id="frm-whatever">
-                            <option value="" selected disabled>City</option>
-                            <option value="1">City 1</option>
-                            <option value="2">City 2</option>
-                            <option value="3">City 3</option>
-                        </select>
-                        <div class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-white">
-                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+                <a href="./jobs new.html" class="nav-link px-3 py-2 rounded-md font-medium">
+                  <span class="mr-2"><i class="fa-solid fa-briefcase"></i></span>Jobs
+              </a>
             </div>
         </div>
     </nav>
@@ -142,17 +118,20 @@
                     <div>
                         <h2>Your one stop guide to california.</h2>
                     </div>
+                    <!-- ------------------------ creted by Ying -------------------- -->
                     <div class="current-main-div card">
                         <div class="weather">
                           <h3 class="mb-3"></h3>
-                          <div>Temp:<span class="temp"></span>°F</div>
+                          <div>Temp: <span class="temp"></span>°F</div>
                           <div class="flex">
                               <img src="" alt="" class="icon"/>
                           </div>
-                          <div>Humidity:<span class="humidity"></span>%</div>
-                          <div>Wind speed:<span class="wind"></span>MPH</div>
+                          <div>Humidity: <span class="humidity"></span>%</div>
+                          <div>Wind speed: <span class="wind"></span>MPH</div>
                         </div>
                       </div>
+                      <!-- ------------------------ creted by Ying -------------------- -->
+
                 </div>
                 <div class="offset-lg-1 flex items-center">
                     <div class="header-img">
@@ -267,6 +246,28 @@
                 </div>
                 <p class="orange mb-0">4000+ restaunts to explore!</p>
             </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    const button = document.querySelector('#menu-button');
+    const menu = document.querySelector('#mobile-menu');
+
+
+    button.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+
+</script>
+<script src="./script.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" ></script>
+
+
+</body>
+</html>
+     </div>
         </div>
     </div>
 </section>
