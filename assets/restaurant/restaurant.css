@@ -271,6 +271,12 @@ button#search-btn {
 .sec-2{
     height: 924px;
 }
+
+.modal a {
+    color: blue;
+    text-decoration: underline;
+}
+
 @media all and (max-width:991px) {
     nav select{
         width: 100%;
