@@ -65,11 +65,11 @@ function displayNextBart(nextBart) {
       var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform; // Check platf
       // create if statment, as I want to display the for the first time as Departure in and the second time to display as NEXT BART
       if (j === 0) {
-        h4.textContent = "Departure in: " + nextBartTime + ", Platform: " + platformNumb;
+        h4.textContent = "Departure in: " + nextBartTime + " minutes, Platform: " + platformNumb;
 
         divCard.appendChild(h4);
       } else {
-        h4.textContent = "Next BART in: " + nextBartTime + ", Platform: " + platformNumb;
+        h4.textContent = "Next BART in: " + nextBartTime + " minutes, Platform: " + platformNumb;
         divCard.appendChild(h4);
         j++;
       }
