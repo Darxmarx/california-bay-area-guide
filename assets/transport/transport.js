@@ -1,6 +1,6 @@
-
 var station = $('#stName');
-var dest = document.querySelector(".stationName");
+var dest = document.querySelector(".dest");
+var currentStation = document.querySelector(".stationName");
 var stationContainer = document.querySelector("#stationContainer");
 
 var localStg = [];
@@ -20,7 +20,6 @@ function fetchBart (station) {
   .then( (response) => {
     console.log(localStg);
     if (response.ok) {
-
           response.json().then((data) =>{
           console.log(data);
           displayNextBart(data);
@@ -36,17 +35,14 @@ function fetchBart (station) {
 }
 
 function displayNextBart(nextBart) {
-  var date = nextBart.root.date; // check the today date
-  var time1 = nextBart.root.time;  // check the time
   var stationName = nextBart.root.station[0].name; // check the station name
     // ################################################
   var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
   // ################################################
 
-  // Should check this with shaun tomorrow to see how he wants to display
-  dest.textContent = "Station Name: " + stationName;// This will add tge station name the user is searchin for
+  currentStation.textContent = stationName;// This will add tge station name the user is searchin for
 
-
+  dest.textContent = "";
   // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.
   for (var i = 0; i < loopEtd.length; i++) {
 
@@ -56,7 +52,10 @@ function displayNextBart(nextBart) {
     var divCard = document.createElement("div");// creates a div that will add the API infomration
     var h3 = document.createElement("h3"); // create a h3 tag to be linked to the destination name
     h3.textContent = "Final destination: " + finalDestination;
+
     dest.appendChild(divCard);
+    h3.setAttribute("class","h3style");
+
     divCard.appendChild(h3);
     
     // the second for loop is to iterate over the nested array, so I will be able to display to the user the departure time and also the next bart available.
@@ -67,6 +66,7 @@ function displayNextBart(nextBart) {
       // create if statment, as I want to display the for the first time as Departure in and the second time to display as NEXT BART
       if (j === 0) {
         h4.textContent = "Departure in: " + nextBartTime + ", Platform: " + platformNumb;
+
         divCard.appendChild(h4);
       } else {
         h4.textContent = "Next BART in: " + nextBartTime + ", Platform: " + platformNumb;
@@ -74,11 +74,7 @@ function displayNextBart(nextBart) {
         j++;
       }
     }
-
   }
-  
-  //  console.log(date, stationName,time1,platformNumb);
-  //  console.log(loopEtd);
 }
 
 // Function to compare the full station name and the Abbreviation name, it returns the abbreviation and add it to the FETCH function
@@ -96,7 +92,6 @@ function setAbbreviation(station){
     if (station === stationFullName[i]){
       stationAbbr = stationAbbreviation[i];
     }
-    
   }
   console.log("This is the Statoin Abbreviation: " + stationAbbr);
   fetchBart(stationAbbr);
@@ -144,10 +139,7 @@ function addStationToDisplay(){
   stationContainer.appendChild(button);
   }
 }
-
 function localStgSize() {
 }
 
 displayStations();
-
-

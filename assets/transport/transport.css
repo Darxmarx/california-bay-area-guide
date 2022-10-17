@@ -263,12 +263,53 @@ nav select{
     display: block;
     justify-content: center;
     padding: 25px;
-    border: 1px solid lightblue;
-    width: 300px;
+    border: 1px solid #FF9900;
+    width: 325px;
     margin: 15px;
     border-radius: 20px;
+    height: 135px;
 }
 
+button.search-btn {
+    background: #FF9900;
+}
+
+.dest {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+h3.stationName {
+    padding: 20px;
+    font-size: 150%;
+    font-weight: inherit;
+    font-family: inherit;
+   }
+
+.addItCenter {
+    text-align: center;
+}
+
+.api-section.sec-1 {
+    display: block;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+h2.searcHistory {
+    font-size: 140%;
+    font-weight: inherit;
+    font-family: inherit;
+    margin-bottom: 15px;
+    color: #5b5b5b;
+}
+
+div>h3 {
+    font-weight: bolder;
+}
 /*-----------------------------------------------------------Luiz New Div --------------------------------------------------------------*/
 
 .search-btn{
