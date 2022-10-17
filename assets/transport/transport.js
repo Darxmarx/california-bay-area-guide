@@ -135,6 +135,7 @@ function addStationToDisplay(){
     var stationStg = localStg[i];
     var button = document.createElement("button");
     button.textContent = stationStg;
+    button.setAttribute("class","buttonInDiv");
     button.addEventListener("click", function(event){// add the event listner in the every button
       var stationStg = event.target.textContent;
       console.log(stationStg);

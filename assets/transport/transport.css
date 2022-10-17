@@ -259,7 +259,7 @@ nav select{
     justify-content: space-around;
 }
 
-.dest div {
+.dest>div {
     display: block;
     justify-content: center;
     padding: 25px;
