@@ -1,6 +1,6 @@
 
 var station = $('#stName');
-var dest = document.querySelector(".dest");
+var dest = document.querySelector(".stationName");
 var stationContainer = document.querySelector("#stationContainer");
 
 var localStg = [];
@@ -44,7 +44,7 @@ function displayNextBart(nextBart) {
   // ################################################
 
   // Should check this with shaun tomorrow to see how he wants to display
-  dest.textContent = stationName;// This will add tge station name the user is searchin for
+  dest.textContent = "Station Name: " + stationName;// This will add tge station name the user is searchin for
 
 
   // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.

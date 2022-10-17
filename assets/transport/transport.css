@@ -236,6 +236,41 @@ nav select{
     letter-spacing: -0.408px;
     color: #FF9900;
 }
+/*-----------------------------------------------------------Luiz New Div --------------------------------------------------------------*/
+.buttonInDiv {
+    font-family: inherit;
+    font-size: 100%;
+    font-size: inherit;
+    line-height: inherit;
+    color: white;
+    padding: 10px;
+    margin-right: 015px;
+    background-color: #FF9900;
+    border-radius: 25px;
+}
+
+.sec-1{
+    width: 100%;
+    height: 130px;
+    margin: 40px 0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dest div {
+    display: block;
+    justify-content: center;
+    padding: 25px;
+    border: 1px solid lightblue;
+    width: 300px;
+    margin: 15px;
+    border-radius: 20px;
+}
+
+/*-----------------------------------------------------------Luiz New Div --------------------------------------------------------------*/
+
 .search-btn{
     width: 134px;
     height: 45px;
