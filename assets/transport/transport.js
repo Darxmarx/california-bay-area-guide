@@ -9,9 +9,7 @@ var stationAbbreviation = ["12th",	"16th",	"19th",	"24th",	"ashb",	"antc",	"balb
 
 var stationFullName = ["12th St. Oakland City Center",	"16th St. Mission (SF)",	"19th St. Oakland",	"24th St. Mission (SF)",	"Ashby (Berkeley)",	"Antioch",	"Balboa Park (SF)",	"Bay Fair (San Leandro)",	"Berryessa / North San Jose",	"Castro Valley",	"Civic Center (SF)",	"Coliseum",	"Colma",	"Concord",	"Daly City",	"Downtown Berkeley",	"Dublin/Pleasanton",	"El Cerrito del Norte",	"El Cerrito Plaza",	"Embarcadero (SF)",	"Fremont",	"Fruitvale (Oakland)",	"Glen Park (SF)",	"Hayward",	"Lafayette",	"Lake Merritt (Oakland)",	"MacArthur (Oakland)",	"Millbrae",	"Milpitas",	"Montgomery St. (SF)",	"North Berkeley",	"North Concord/Martinez",	"Oakland Int'l Airport",	"Orinda",	"Pittsburg/Bay Point",	"Pittsburg Center",	"Pleasant Hill",	"Powell St. (SF)",	"Richmond",	"Rockridge (Oakland)",	"San Bruno",	"San Francisco Int'l Airport",	"San Leandro",	"South Hayward",	"South San Francisco",	"Union City",	"Warm Springs/South Fremont",	"Walnut Creek",	"West Dublin",	"West Oakland",
 ];
-
-
-
+//function to get the API information
 function fetchBart (station) {
 
   var apiKey = "MW9S-E7SL-26DU-VV8V&json=y";
@@ -33,12 +31,12 @@ function fetchBart (station) {
         }
       })
 }
-
+// will display next bart
 function displayNextBart(nextBart) {
-  var stationName = nextBart.root.station[0].name; // check the station name
-  var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
+  var stationName = nextBart.root.station[0].name;
+  var loopEtd = nextBart.root.station[0].etd;
  
-  currentStation.textContent = stationName;// This will add tge station name the user is searchin for
+  currentStation.textContent = stationName;// Station name for the search
 
   dest.textContent = "";
   // create a for loop to iterate over the array, every station has multiples final destination and for that reason, I created a for loop to iterate over it.
@@ -47,8 +45,8 @@ function displayNextBart(nextBart) {
     var loopEstimate = nextBart.root.station[0].etd[i].estimate;// loop for time
     var finalDestination = nextBart.root.station[0].etd[i].destination; // display the final dest name
 
-    var divCard = document.createElement("div");// creates a div that will add the API infomration
-    var h3 = document.createElement("h3"); // create a h3 tag to be linked to the destination name
+    var divCard = document.createElement("div");
+    var h3 = document.createElement("h3"); 
     h3.textContent = "Final destination: " + finalDestination;
 
     dest.appendChild(divCard);
@@ -59,8 +57,8 @@ function displayNextBart(nextBart) {
     // the second for loop is to iterate over the nested array, so I will be able to display to the user the departure time and also the next bart available.
     for(var j = 0; j < loopEstimate.length; j++ ) {
       var h4 = document.createElement("h4");
-      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;// Check the min
-      var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform; // Check platf
+      var nextBartTime = nextBart.root.station[0].etd[i].estimate[j].minutes;
+      var platformNumb = nextBart.root.station[0].etd[i].estimate[j].platform;
       // create if statment, as I want to display the for the first time as Departure in and the second time to display as NEXT BART
       if (j === 0) {
         h4.textContent = "Departure in: " + nextBartTime + " minutes, Platform: " + platformNumb;
