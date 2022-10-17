@@ -26,7 +26,6 @@ function fetchBart (station) {
 
           });
         } else {
-          alert('Error: Please select the correct staion from the autocomplete fild.');
           return;
         }
       })

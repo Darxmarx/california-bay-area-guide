@@ -55,10 +55,6 @@ nav select{
 }
 
 @media all and (min-width:992px) {
-
-    /* .header-nav {
-        height: 100vh;
-    } */
     .header-nav .city-btn {
 
         width: 194px;
