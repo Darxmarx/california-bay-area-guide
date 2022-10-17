@@ -252,11 +252,11 @@ nav select{
     border-radius: 20px;
 }
 .sec-1{
-    height: 148px;
+    height: 50px;
     margin: 40px 0;
 }
 .sec-2{
-    height: 924px;
+    height: 2400px;
 }
 @media all and (max-width:991px) {
     nav select{
