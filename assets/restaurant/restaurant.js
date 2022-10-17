@@ -38,7 +38,11 @@ function loadRestaurants() {
             console.log(restImg);
 
             var restUrl = response.businesses[i].url;
-            console.log(restUrl);        
+            console.log(restUrl);   
+            
+            $("#rest-name-" + i).html(restName);
+            $("#rest-img-" + i).html("<a href=" + restUrl + "><img src=" + restImg + " alt='restaurant image'/></a>");
+            //$("#rest-url-" + i).html("href=" + restUrl);
         }
     })
     restGrid.removeClass("invisible");
