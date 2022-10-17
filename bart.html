@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/js/fontawesome.min.js"/>
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="./assets/transport/transport.css"/>
 </head>
 <body>
 <div>
@@ -127,17 +131,17 @@
 <section class="py-10 mx-auto max-w-7xl px-2">
     <h3 class="default-heading">Bart</h3>
     <div class="restaurant-search py-5 flex sm:justify-center relative">
-        <div class="align-end">
+        <div class="align-end search">
             <form action="" class="form-search relative flex items-center">
                 <input
                         type="text"
                         placeholder="Search"
-                        class="form-control"
+                        class="form-control search-bar"
                         name=""
-                        id=""
+                        id="station"
                 />
                 <div>
-                    <button class="search-btn">Search</button>
+                    <button type="button" class="search-btn ">Search</button>
                 </div>
                 <span class="absolute"
                 ><i class="fa-solid fa-magnifying-glass"></i
@@ -147,11 +151,26 @@
     </div>
 
     <div class="api-section sec-1">
-
-    </div>
-    <div class="api-section sec-2">
-
-    </div>
+        <div>
+          <h2 class="searcHistory">Search history</h2>
+        </div>
+        <div class="stationContainer" id="stationContainer"></div>
+      </div>
+      <div class="api-section sec-2">
+        <div class="addItCenter">
+          <h3 class="stationName"></h3>
+        </div>
+        <div class="dest"></div>
+        <div class="bartMap">
+            <div>
+                <h2 class="bartDesc">Bart Map</h2>
+            </div>
+            <div class="bartMap1">
+                <img class="bartMapImg" src="./assets/images/bartMap.png" alt="Bart Map" />
+            </div>
+            
+        </div>
+      </div>
 
 
 </section>
@@ -167,5 +186,6 @@
     });
 
 </script>
+<script src="./assets/transport/transport.js"></script>
 </body>
 </html>
