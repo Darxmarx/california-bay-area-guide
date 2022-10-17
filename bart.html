@@ -127,17 +127,17 @@
 <section class="py-10 mx-auto max-w-7xl px-2">
     <h3 class="default-heading">Bart</h3>
     <div class="restaurant-search py-5 flex sm:justify-center relative">
-        <div class="align-end">
+        <div class="align-end search">
             <form action="" class="form-search relative flex items-center">
                 <input
                         type="text"
                         placeholder="Search"
-                        class="form-control"
+                        class="form-control search-bar"
                         name=""
-                        id=""
+                        id="station"
                 />
                 <div>
-                    <button class="search-btn">Search</button>
+                    <button type="button" class="search-btn ">Search</button>
                 </div>
                 <span class="absolute"
                 ><i class="fa-solid fa-magnifying-glass"></i
@@ -147,11 +147,18 @@
     </div>
 
     <div class="api-section sec-1">
-
-    </div>
-    <div class="api-section sec-2">
-
-    </div>
+        <div>
+          <h2 class="searcHistory">Search history</h2>
+        </div>
+        <div class="stationContainer" id="stationContainer"></div>
+      </div>
+      <div class="api-section sec-2">
+        <div class="addItCenter">
+          <h3 class="stationName"></h3>
+        </div>
+        <div class="dest">
+        </div>
+      </div>
 
 
 </section>
@@ -167,5 +174,6 @@
     });
 
 </script>
+<script src="./assets/transport/transport.js"></script>
 </body>
 </html>
