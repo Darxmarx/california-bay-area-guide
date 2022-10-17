@@ -319,6 +319,19 @@ h2.searcHistory {
     justify-content: center;
 }
 
+.bartMapImg{
+    box-shadow: 0px 0px 6px rgba(174, 174, 219, 0.5);
+    margin-bottom: 40px;
+    border-radius: 20px;
+}
+
+.bartDesc{
+    margin-bottom: 25px;
+    font-size: 135%;
+    font-weight: inherit;
+    color: #5b5b5b;
+}
+
 .h3style {
     font-weight: bolder;
     color: #5b5b5b;
@@ -345,7 +358,7 @@ h2.searcHistory {
     margin: 40px 0;
 }
 .sec-2{
-    height: 924px;
+    height: auto;
 }
 @media all and (max-width:991px) {
     nav select{
