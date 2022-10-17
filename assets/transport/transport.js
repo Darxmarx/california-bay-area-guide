@@ -36,10 +36,8 @@ function fetchBart (station) {
 
 function displayNextBart(nextBart) {
   var stationName = nextBart.root.station[0].name; // check the station name
-    // ################################################
   var loopEtd = nextBart.root.station[0].etd;//use this to create the for loop on the statation
-  // ################################################
-
+ 
   currentStation.textContent = stationName;// This will add tge station name the user is searchin for
 
   dest.textContent = "";
