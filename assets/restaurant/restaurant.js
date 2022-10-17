@@ -41,7 +41,7 @@ function loadRestaurants() {
             console.log(restUrl);   
             
             $("#rest-name-" + i).html(restName);
-            $("#rest-img-" + i).html("<a href=" + restUrl + "><img class='flex-none' src=" + restImg + " alt='restaurant image'/></a>");
+            $("#rest-img-" + i).html("<a href=" + restUrl + " target='_blank'><img class='flex-none' src=" + restImg + " alt='restaurant image'/></a>");
             //$("#rest-url-" + i).html("href=" + restUrl);
         }
     })
